@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
@@ -36,7 +37,9 @@ export default function RootLayout({
         <html lang="ko">
             <body className="antialiased">
                 {children}
-                <MetaPixel />
+                <Suspense fallback={null}>
+                    <MetaPixel />
+                </Suspense>
             </body>
         </html>
     );
