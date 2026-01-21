@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
+import UTMLink from './UTMLink';
+
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -40,23 +42,31 @@ export default function Header() {
                                 {item.label}
                             </a>
                         ))}
-                        <a
-                            href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard"
-                            className="ml-4 inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30"
-                        >
-                            <Sparkles size={16} />
-                            무료 시작하기
-                        </a>
+                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                            {(href) => (
+                                <a
+                                    href={href}
+                                    className="ml-4 inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30"
+                                >
+                                    <Sparkles size={16} />
+                                    무료 시작하기
+                                </a>
+                            )}
+                        </UTMLink>
                     </nav>
 
                     {/* 모바일 - 무료체험 버튼만 노출 */}
-                    <a
-                        href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard"
-                        className="md:hidden inline-flex items-center gap-1.5 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md shadow-blue-600/20 active:scale-95 transition-transform"
-                    >
-                        <Sparkles size={14} />
-                        무료체험하기
-                    </a>
+                    <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                        {(href) => (
+                            <a
+                                href={href}
+                                className="md:hidden inline-flex items-center gap-1.5 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md shadow-blue-600/20 active:scale-95 transition-transform"
+                            >
+                                <Sparkles size={14} />
+                                무료체험하기
+                            </a>
+                        )}
+                    </UTMLink>
                 </div>
             </div>
         </header>

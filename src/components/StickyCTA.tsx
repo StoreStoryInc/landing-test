@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 
+import UTMLink from './UTMLink';
+
 export default function StickyCTA() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -54,16 +56,20 @@ export default function StickyCTA() {
                             ))}
                         </div>
 
-                        <motion.a
-                            href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard"
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="inline-flex items-center gap-3 bg-white text-blue-600 font-bold text-lg py-5 px-12 rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-black/20"
-                        >
-                            <Sparkles size={20} />
-                            지금 무료체험하기
-                            <ArrowRight size={20} />
-                        </motion.a>
+                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                            {(href) => (
+                                <motion.a
+                                    href={href}
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="inline-flex items-center gap-3 bg-white text-blue-600 font-bold text-lg py-5 px-12 rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-black/20"
+                                >
+                                    <Sparkles size={20} />
+                                    지금 무료체험하기
+                                    <ArrowRight size={20} />
+                                </motion.a>
+                            )}
+                        </UTMLink>
 
                         <p className="mt-6 text-blue-200 text-sm">
                             카드등록 없이 무료체험해보세요!<br />No 약정, No 자동결제
@@ -82,14 +88,18 @@ export default function StickyCTA() {
                         transition={{ duration: 0.3 }}
                         className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 safe-area-pb shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
-                        <a
-                            href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard"
-                            className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-blue-600/30 active:from-blue-700 active:to-blue-800 transition-all"
-                        >
-                            <Sparkles size={18} />
-                            무료로 시작하기
-                            <ArrowRight size={18} />
-                        </a>
+                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                            {(href) => (
+                                <a
+                                    href={href}
+                                    className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-blue-600/30 active:from-blue-700 active:to-blue-800 transition-all"
+                                >
+                                    <Sparkles size={18} />
+                                    무료로 시작하기
+                                    <ArrowRight size={18} />
+                                </a>
+                            )}
+                        </UTMLink>
                         <p className="text-center text-xs text-gray-400 mt-2.5 font-medium">
                             카드등록 없이 무료체험 해보세요!<br />No 약정 No 자동결제
                         </p>

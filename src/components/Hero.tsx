@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
+import UTMLink from './UTMLink';
+
 export default function Hero() {
     return (
         <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 lg:pt-52 lg:pb-44 px-5 overflow-hidden">
@@ -48,16 +50,20 @@ export default function Hero() {
 
                     {/* CTA 버튼 */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-                        <motion.a
-                            href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="btn-primary text-lg w-full sm:w-auto"
-                        >
-                            <Sparkles size={20} />
-                            지금 무료 체험하기
-                            <ArrowRight size={20} />
-                        </motion.a>
+                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                            {(href) => (
+                                <motion.a
+                                    href={href}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="btn-primary text-lg w-full sm:w-auto"
+                                >
+                                    <Sparkles size={20} />
+                                    지금 무료 체험하기
+                                    <ArrowRight size={20} />
+                                </motion.a>
+                            )}
+                        </UTMLink>
                     </div>
 
                     {/* 신뢰 요소 */}
