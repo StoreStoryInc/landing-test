@@ -82,10 +82,15 @@ export default function StickyCTA() {
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
+                        key="sticky-cta"
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
                         exit={{ y: 100 }}
                         transition={{ duration: 0.3 }}
+                        style={{
+                            transform: 'translate3d(0, 0, 0)',
+                            willChange: 'transform',
+                        }}
                         className="fixed bottom-0 left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
                         <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
