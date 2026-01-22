@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 
@@ -8,6 +8,8 @@ import UTMLink from './UTMLink';
 
 export default function StickyCTA() {
     const [isVisible, setIsVisible] = useState(false);
+    const [bottomOffset, setBottomOffset] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,6 +20,46 @@ export default function StickyCTA() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // iOS Chrome/Safari: visualViewport API로 동적 뷰포트 추적
+    useEffect(() => {
+        let rafId: number;
+
+        const updatePosition = () => {
+            if (window.visualViewport && containerRef.current) {
+                // visualViewport.height 기준으로 버튼 bottom 위치 계산
+                // innerHeight - visualViewport.height = 시스템 바가 차지하는 공간
+                const viewportBottom = window.visualViewport.height + window.visualViewport.offsetTop;
+                const layoutHeight = window.innerHeight;
+                const offset = layoutHeight - viewportBottom;
+
+                // offset이 양수면 시스템 바가 보이는 상태, 0이면 숨겨진 상태
+                setBottomOffset(Math.max(0, offset));
+            }
+        };
+
+        const handleViewportChange = () => {
+            // requestAnimationFrame으로 부드럽게 업데이트
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(updatePosition);
+        };
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', handleViewportChange);
+            window.visualViewport.addEventListener('scroll', handleViewportChange);
+            // 초기값 설정
+            updatePosition();
+        }
+
+        return () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            if (window.visualViewport) {
+                window.visualViewport.removeEventListener('resize', handleViewportChange);
+                window.visualViewport.removeEventListener('scroll', handleViewportChange);
+            }
+        };
+    }, []);
+
 
     return (
         <>
@@ -82,16 +124,14 @@ export default function StickyCTA() {
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
+                        ref={containerRef}
                         key="sticky-cta"
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
                         exit={{ y: 100 }}
                         transition={{ duration: 0.3 }}
-                        style={{
-                            transform: 'translate3d(0, 0, 0)',
-                            willChange: 'transform',
-                        }}
-                        className="fixed bottom-0 left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
+                        style={{ bottom: bottomOffset }}
+                        className="fixed left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
                         <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
