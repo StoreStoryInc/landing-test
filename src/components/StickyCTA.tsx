@@ -8,6 +8,7 @@ import UTMLink from './UTMLink';
 
 export default function StickyCTA() {
     const [isVisible, setIsVisible] = useState(false);
+    const [bottomOffset, setBottomOffset] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,6 +19,31 @@ export default function StickyCTA() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // iOS Chrome 뷰포트 변화 감지 (하단 바 숨김/표시)
+    useEffect(() => {
+        const updateBottomOffset = () => {
+            if (window.visualViewport) {
+                // 전체 화면 높이에서 보이는 뷰포트 높이를 빼면 시스템 바 높이가 나옴
+                const offset = window.innerHeight - window.visualViewport.height;
+                setBottomOffset(Math.max(0, offset));
+            }
+        };
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateBottomOffset);
+            window.visualViewport.addEventListener('scroll', updateBottomOffset);
+            updateBottomOffset(); // 초기값 설정
+        }
+
+        return () => {
+            if (window.visualViewport) {
+                window.visualViewport.removeEventListener('resize', updateBottomOffset);
+                window.visualViewport.removeEventListener('scroll', updateBottomOffset);
+            }
+        };
+    }, []);
+
 
     return (
         <>
@@ -86,7 +112,8 @@ export default function StickyCTA() {
                         animate={{ y: 0 }}
                         exit={{ y: 100 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed bottom-0 left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
+                        style={{ bottom: bottomOffset }}
+                        className="fixed left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
                         <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
