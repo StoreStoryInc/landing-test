@@ -86,13 +86,13 @@ export default function StickyCTA() {
                         animate={{ y: 0 }}
                         exit={{ y: 100 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-white/95 backdrop-blur-xl border-t border-gray-100 safe-area-pb shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
+                        className="fixed bottom-0 left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
                         <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
                                 <a
                                     href={href}
-                                    className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-blue-600/30 active:from-blue-700 active:to-blue-800 transition-all"
+                                    className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-600/30 active:from-blue-700 active:to-blue-800 transition-all text-[17px]"
                                 >
                                     <Sparkles size={18} />
                                     무료로 시작하기
@@ -100,8 +100,8 @@ export default function StickyCTA() {
                                 </a>
                             )}
                         </UTMLink>
-                        <p className="text-center text-xs text-gray-400 mt-2.5 font-medium">
-                            카드등록 없이 무료체험 해보세요!<br />No 약정 No 자동결제
+                        <p className="text-center text-[11px] text-gray-400 mt-2 font-medium pb-1">
+                            카드등록 없이 무료체험 해보세요! No 약정 No 자동결제
                         </p>
                     </motion.div>
                 )}
