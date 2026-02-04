@@ -13,7 +13,7 @@ export default function Header() {
     const navItems = [
         { label: '기능 소개', href: '#features' },
         { label: '대시보드', href: '#dashboard' },
-        { label: '고객 후기', href: '#testimonials' },
+        { label: '요금제', href: '#pricing' },
     ];
 
     return (
