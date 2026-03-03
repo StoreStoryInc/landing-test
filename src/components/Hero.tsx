@@ -43,7 +43,7 @@ export default function Hero() {
 
                     {/* 서브 카피 */}
                     <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        리뷰닥터가 답글부터 관리까지 자동으로.
+                        세일즈랩이 답글부터 관리까지 자동으로.
                         <br />
                         남는 시간엔 <span className="text-gray-800 font-semibold">'매출 분석 대시보드'</span>로 진짜 문제를 해결하세요.
                     </p>
@@ -67,21 +67,21 @@ export default function Hero() {
                     </div>
 
                     {/* 신뢰 요소 */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mt-10 text-sm text-gray-400">
-                        <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-12 text-base md:text-lg font-medium text-gray-500">
+                        <span className="flex items-center gap-2.5">
+                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             카드 등록 없이 시작
                         </span>
-                        <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <span className="flex items-center gap-2.5">
+                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             3분 연동
                         </span>
-                        <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <span className="flex items-center gap-2.5">
+                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             최다 플랫폼

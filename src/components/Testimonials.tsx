@@ -72,7 +72,7 @@ export default function Testimonials() {
                         사장님들의 <span className="gradient-text">생생한 후기</span>
                     </h2>
                     <p className="text-gray-500 text-lg">
-                        리뷰닥터를 사용 중인 사장님들의 실제 후기입니다.
+                        세일즈랩을 사용 중인 사장님들의 실제 후기입니다.
                     </p>
                 </motion.div>
 

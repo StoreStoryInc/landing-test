@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 import UTMLink from './UTMLink';
@@ -18,16 +18,34 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-100/50">
+            {/* 리브랜딩 안내 띠 배너 */}
+            <div className="bg-[#112D4E] text-white shadow-lg border-b border-white/10">
+                <div className="max-w-6xl mx-auto px-5 py-3 sm:py-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-base sm:text-lg lg:text-xl font-medium">
+                    <span className="inline-flex items-center justify-center bg-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-sm">
+                        <div className="relative flex items-center justify-center w-[120px] sm:w-[150px] h-[30px] sm:h-[36px] overflow-hidden">
+                            <img
+                                src="/service_logo/PNG (3).png"
+                                alt="리뷰닥터"
+                                className="absolute max-w-none w-[170px] sm:w-[200px]"
+                            />
+                        </div>
+                    </span>
+                    <span className="text-blue-50 tracking-wide drop-shadow-sm">
+                        가 <span className="font-bold text-white">새로운 이름</span>으로 태어났어요! ✨
+                    </span>
+                </div>
+            </div>
+
             <div className="max-w-6xl mx-auto px-5">
                 <div className="flex items-center justify-between h-16 md:h-18">
                     {/* 로고 */}
                     <a href="#" className="flex items-center gap-2.5 group">
                         <Image
-                            src="/service_logo/PNG (3).png"
-                            alt="리뷰닥터"
-                            width={1260}
-                            height={360}
-                            className="h-52 md:h-64 w-auto object-contain"
+                            src="/service_logo/saleslab_logo.svg"
+                            alt="세일즈랩"
+                            width={200}
+                            height={55}
+                            className="h-10 md:h-11 w-auto object-contain"
                         />
                     </a>
 

@@ -62,7 +62,7 @@ export default function Features() {
                         사장님의 <span className="gradient-text">시간</span>을 되찾아드려요
                     </h2>
                     <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                        리뷰닥터가 반복 업무를 대신하고, 악성 리뷰에 빠르게 대응하고, 단골을 만들어드립니다.
+                        세일즈랩이 반복 업무를 대신하고, 악성 리뷰에 빠르게 대응하고, 단골을 만들어드립니다.
                     </p>
                 </motion.div>
 

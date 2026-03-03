@@ -9,11 +9,11 @@ export default function Footer() {
                 {/* 로고 */}
                 <div className="mb-8">
                     <Image
-                        src="/service_logo/PNG (3).png"
-                        alt="리뷰닥터"
-                        width={1440}
-                        height={432}
-                        className="h-72 w-auto object-contain brightness-0 invert"
+                        src="/service_logo/saleslab_logo.svg"
+                        alt="세일즈랩"
+                        width={240}
+                        height={68}
+                        className="h-12 md:h-14 w-auto object-contain brightness-0 invert"
                     />
                 </div>
 
