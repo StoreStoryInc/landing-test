@@ -50,7 +50,7 @@ export default function Hero() {
 
                     {/* CTA 버튼 */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                        <UTMLink href="https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
                                 <motion.a
                                     href={href}

@@ -60,7 +60,7 @@ export default function Header() {
                                 {item.label}
                             </a>
                         ))}
-                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                        <UTMLink href="https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
                                 <a
                                     href={href}
@@ -74,7 +74,7 @@ export default function Header() {
                     </nav>
 
                     {/* 모바일 - 무료체험 버튼만 노출 */}
-                    <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                    <UTMLink href="https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard">
                         {(href) => (
                             <a
                                 href={href}

@@ -98,7 +98,7 @@ export default function StickyCTA() {
                             ))}
                         </div>
 
-                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                        <UTMLink href="https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
                                 <motion.a
                                     href={href}
@@ -133,7 +133,7 @@ export default function StickyCTA() {
                         style={{ bottom: bottomOffset }}
                         className="fixed left-0 right-0 z-40 md:hidden px-4 pt-3 pb-2 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)]"
                     >
-                        <UTMLink href="https://www.reviewdoctor.kr/auth/signin?&redirectUrl=/dashboard">
+                        <UTMLink href="https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard">
                             {(href) => (
                                 <a
                                     href={href}
