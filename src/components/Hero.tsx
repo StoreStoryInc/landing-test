@@ -43,7 +43,7 @@ export default function Hero() {
 
                     {/* 서브 카피 */}
                     <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        세일즈랩이 답글부터 관리까지 자동으로.
+                        세일즈랩이 <span className="text-gray-800 font-semibold">리뷰 답글</span>부터 <span className="text-gray-800 font-semibold">광고 스케줄</span>, <span className="text-gray-800 font-semibold">정산 출금</span>까지 <span className="text-gray-800 font-semibold">자동으로</span>.
                         <br />
                         남는 시간엔 <span className="text-gray-800 font-semibold">'매출 분석 대시보드'</span>로 진짜 문제를 해결하세요.
                     </p>

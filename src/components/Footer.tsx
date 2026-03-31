@@ -50,7 +50,7 @@ export default function Footer() {
                         서비스이용약관
                     </a>
                     <a
-                        href="https://field-pyrite-e66.notion.site/31b4b16ecd1e8078b7c2e1f63fc9cca1?source=copy_link"
+                        href="https://field-pyrite-e66.notion.site/3294b16ecd1e80bc8fffd7a78170ce88?source=copy_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-white transition-colors"

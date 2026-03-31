@@ -2,7 +2,9 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import SocialProof from '@/components/SocialProof';
 import Features from '@/components/Features';
+import Automation from '@/components/Automation';
 import Dashboard from '@/components/Dashboard';
+import MiddleCTA from '@/components/MiddleCTA';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
@@ -16,7 +18,9 @@ export default function Home() {
             <Hero />
             <SocialProof />
             <Features />
+            <Automation />
             <Dashboard />
+            <MiddleCTA />
             <Testimonials />
             <Pricing />
             <FAQ />

@@ -39,6 +39,13 @@ const features = [
         ],
     },
     {
+        category: '자동화 기능',
+        items: [
+            { name: '쿠팡이츠\n자동 출금', basic: false, pro: true },
+            { name: '우가클\n스케줄 자동 관리', basic: false, pro: true },
+        ],
+    },
+    {
         category: '통합 관리 및\n대시보드',
         items: [
             { name: '매출 통계', basic: true, pro: true },

@@ -88,7 +88,7 @@ export default function StickyCTA() {
 
                         {/* 혜택 리스트 */}
                         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-10">
-                            {['월 300건 답글 생성 무료', '대시보드 평생 무료', '카드 등록 없이 시작'].map((benefit) => (
+                            {['카드등록 없음', '약정 없음', '자동결제 없음'].map((benefit) => (
                                 <div key={benefit} className="flex items-center gap-2 text-white/90">
                                     <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                                         <Check size={12} className="text-white" />
@@ -113,9 +113,7 @@ export default function StickyCTA() {
                             )}
                         </UTMLink>
 
-                        <p className="mt-6 text-blue-200 text-sm">
-                            카드등록 없이 무료체험해보세요!<br />No 약정, No 자동결제
-                        </p>
+
                     </motion.div>
                 </div>
             </section>
@@ -145,9 +143,7 @@ export default function StickyCTA() {
                                 </a>
                             )}
                         </UTMLink>
-                        <p className="text-center text-[11px] text-gray-400 mt-2 font-medium pb-1">
-                            카드등록 없이 무료체험 해보세요! No 약정 No 자동결제
-                        </p>
+
                     </motion.div>
                 )}
             </AnimatePresence>

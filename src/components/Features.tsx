@@ -21,8 +21,14 @@ const features = [
         icon: Bell,
         badge: '실시간 알림',
         title: '악성 리뷰? 골든타임을 잡으세요.',
-        subtitle: '카카오톡 알림톡으로 즉시 알려드려요.',
-        description: '별점 3점 이하 리뷰 등록 시 카카오톡 알림톡으로 즉시 발송. 골든타임 안에 대응하세요.',
+        mobileTitle: '악성 리뷰?\n골든타임을 잡으세요.',
+        subtitle: '부정리뷰가 달리면 즉시 알려드려요',
+        description: (
+            <>
+                별점 3점 이하 리뷰, 4~5점이더라도 사장님 확인 필요한 내용의 리뷰가 등록되면 즉시 알림 발송.
+                <br className="hidden md:block" /> 골든타임 안에 대응하세요.
+            </>
+        ),
         gradient: 'from-orange-500 to-rose-500',
         bgGradient: 'from-orange-50 to-rose-50',
         iconBg: 'bg-gradient-to-br from-orange-500 to-rose-500',
@@ -33,6 +39,7 @@ const features = [
         icon: Users,
         badge: '단골 만들기',
         title: "'잊은 고객'을 '단골'로 만듭니다.",
+        mobileTitle: "'잊은 고객'을\n'단골'로 만듭니다.",
         subtitle: '재주문 타이밍 맞춤 답글',
         description: '각기 다른 고객들의 식사시간을 추정해 답글을 달아 재주문을 유도합니다.',
         gradient: 'from-emerald-500 to-teal-600',
@@ -59,7 +66,7 @@ export default function Features() {
                         핵심 기능
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
-                        사장님의 <span className="gradient-text">시간</span>을 되찾아드려요
+                        사장님의 <span className="gradient-text">시간</span>을<br className="md:hidden" />되찾아드려요
                     </h2>
                     <p className="text-gray-500 text-lg max-w-2xl mx-auto">
                         세일즈랩이 반복 업무를 대신하고, 악성 리뷰에 빠르게 대응하고, 단골을 만들어드립니다.
@@ -94,7 +101,12 @@ export default function Features() {
                                             </span>
                                         </div>
                                         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-snug">
-                                            {feature.title}
+                                            {feature.mobileTitle ? (
+                                                <>
+                                                    <span className="md:hidden whitespace-pre-line">{feature.mobileTitle}</span>
+                                                    <span className="hidden md:inline">{feature.title}</span>
+                                                </>
+                                            ) : feature.title}
                                         </h3>
                                         <p className="text-blue-600 font-semibold mb-4 text-lg md:text-xl">
                                             {feature.subtitle}
