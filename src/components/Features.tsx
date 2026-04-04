@@ -66,7 +66,7 @@ export default function Features() {
                         핵심 기능
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
-                        사장님의 <span className="gradient-text">시간</span>을<br className="md:hidden" />되찾아드려요
+                        사장님의 <span className="gradient-text">시간</span>을 <br className="md:hidden" />되찾아드려요
                     </h2>
                     <p className="text-gray-500 text-lg max-w-2xl mx-auto">
                         세일즈랩이 반복 업무를 대신하고, 악성 리뷰에 빠르게 대응하고, 단골을 만들어드립니다.

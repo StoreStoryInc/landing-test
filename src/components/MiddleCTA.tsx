@@ -17,7 +17,7 @@ export default function MiddleCTA() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    <h2 className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white mb-6 leading-tight tracking-tight word-keep break-keep">
+                    <h2 className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white mb-6 tracking-tight word-keep break-keep" style={{ lineHeight: 1.5 }}>
                         매출 올리는 진짜 리뷰 관리,<br className="hidden md:block" />
                         지금 바로 경험해 보세요.
                     </h2>
