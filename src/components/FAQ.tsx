@@ -53,9 +53,21 @@ const faqs = [
         question: '어떤 플랫폼 연동이 가능한가요? 다른 곳과 무엇이 다른가요?',
         answer: (
             <>
-                배달의 민족, 쿠팡이츠, 요기요, 땡겨요, 네이버 플레이스까지 총 5개의 플랫폼과 연동이 가능합니다.
+                배달의민족, 쿠팡이츠, 요기요, 땡겨요, 먹깨비, 대구로 등 배달 플랫폼과 네이버 플레이스까지 총 7개 플랫폼과 연동이 가능합니다.
+                <br /><br />
+                추가로 <span className="font-bold bg-emerald-50 text-emerald-700 px-1 py-0.5 rounded">OKPOS, UNION POS 2종의 POS와도 매출 연동</span>이 가능해 오프라인 매출까지 한 번에 관리할 수 있습니다.
                 <br /><br />
                 <span className="font-bold bg-blue-50 text-blue-700 px-1 py-0.5 rounded">세일즈랩은 관련 서비스 중 유일하게 네이버 플레이스까지 양방향 연동이 되는 서비스 입니다.</span>
+            </>
+        ),
+    },
+    {
+        question: 'POS 연동도 가게 수에 포함되나요? 추가 비용이 있나요?',
+        answer: (
+            <>
+                아니요. <span className="font-bold bg-emerald-50 text-emerald-700 px-1 py-0.5 rounded">POS 연동은 가게 수에 포함되지 않으며, 무료로 추가</span>하실 수 있습니다.
+                <br /><br />
+                현재 OKPOS와 UNION POS 2종을 지원하며, 배달 매출과 POS 매출을 함께 통합해 진짜 가게 매출을 한눈에 확인하실 수 있습니다.
             </>
         ),
     },

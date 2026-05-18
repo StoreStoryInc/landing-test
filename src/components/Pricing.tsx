@@ -57,6 +57,12 @@ const features = [
             { name: '내 가게 랭킹', basic: false, pro: true },
         ],
     },
+    {
+        category: 'POS 매출 연동\n(가게 수 미포함·무료)',
+        items: [
+            { name: 'POS 매출 연동', basic: true, pro: true },
+        ],
+    },
 ];
 
 // 체크/엑스 아이콘 컴포넌트
@@ -142,6 +148,16 @@ export default function Pricing() {
                         <div className="p-5 text-center bg-blue-50/70 border-l border-blue-100 flex items-center justify-center flex-col">
                             <span className="text-gray-700">{plans.pro.stores}</span>
                             <span className="text-gray-500 text-sm">{plans.pro.storesNote}</span>
+                        </div>
+                    </div>
+
+                    {/* POS 안내 */}
+                    <div className="grid grid-cols-3 border-t border-gray-200">
+                        <div className="bg-gray-50" />
+                        <div className="col-span-2 p-3 md:p-4 border-l border-gray-200 bg-emerald-50/40 text-center">
+                            <span className="text-xs md:text-sm text-emerald-700 font-semibold break-keep">
+                                ✓ POS매출 연동은 가게 수에 포함되지 않으며, 무료로 추가됩니다.
+                            </span>
                         </div>
                     </div>
 

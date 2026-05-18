@@ -4,6 +4,7 @@ import SocialProof from '@/components/SocialProof';
 import Features from '@/components/Features';
 import Automation from '@/components/Automation';
 import Dashboard from '@/components/Dashboard';
+import PlatformIntegrations from '@/components/PlatformIntegrations';
 import MiddleCTA from '@/components/MiddleCTA';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
@@ -20,6 +21,7 @@ export default function Home() {
             <Features />
             <Automation />
             <Dashboard />
+            <PlatformIntegrations />
             <MiddleCTA />
             <Testimonials />
             <Pricing />
