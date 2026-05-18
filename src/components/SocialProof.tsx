@@ -49,7 +49,7 @@ export default function SocialProof() {
                 >
                     {/* 크게 강조된 문구 */}
                     <h2 className="text-[28px] md:text-[40px] lg:text-[48px] font-extrabold text-gray-900 leading-tight tracking-tight">
-                        전국 <span className="gradient-text">10,000+</span> 사장님이
+                        전국 <span className="gradient-text">13,000+</span> 사장님이
                         <br className="md:hidden" />
                         <span className="hidden md:inline"> </span>매일 사용합니다
                     </h2>

@@ -29,7 +29,7 @@ export default function Hero() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                         </span>
-                        전국 10,000+ 사장님이 사용 중
+                        전국 13,000+ 사장님이 사용 중
                     </motion.div>
 
                     {/* 메인 카피 - 크게! */}
