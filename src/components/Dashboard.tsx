@@ -133,16 +133,16 @@ export default function Dashboard() {
                     viewport={{ once: true }}
                     className="text-center mb-14 md:mb-16"
                 >
-                    <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold mb-8 shadow-xl shadow-emerald-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
-                        <span className="text-2xl">🎁</span>
+                    <div className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-xl font-bold mb-6 md:mb-8 shadow-xl shadow-emerald-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
+                        <span className="text-xl md:text-2xl">🎁</span>
                         가입만 하면 평생 무료!
                     </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
+                    <h2 className="text-[26px] md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-5 md:mb-6">
                         <span className="gradient-text">매출 성장 대시보드</span>로
                         <br />
                         진짜 문제를 해결하세요
                     </h2>
-                    <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed break-keep">
+                    <p className="text-gray-500 text-base md:text-xl max-w-2xl mx-auto leading-relaxed break-keep">
                         매출·정산·수수료·광고·랭킹·리뷰까지,<br />
                         가게 운영에 필요한 모든 인사이트를 무료로 드려요.
                     </p>
@@ -224,7 +224,7 @@ export default function Dashboard() {
                                 </div>
 
                                 {/* 이미지 영역 */}
-                                <div className={`w-full md:w-[350px] lg:w-[420px] h-[360px] sm:h-[420px] md:h-auto md:min-h-[460px] flex-shrink-0 bg-gradient-to-br ${item.bgGradient} relative flex items-center justify-center overflow-hidden`}>
+                                <div className={`w-full md:w-[350px] lg:w-[420px] h-[280px] sm:h-[360px] md:h-auto md:min-h-[460px] flex-shrink-0 bg-gradient-to-br ${item.bgGradient} relative flex items-center justify-center overflow-hidden`}>
                                     {item.mockImages?.length === 2 ? (
                                         <div className="relative w-full h-full flex items-center justify-center group">
                                             {/* 뒤쪽 이미지 (우측 상단) */}

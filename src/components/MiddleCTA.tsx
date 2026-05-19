@@ -17,12 +17,12 @@ export default function MiddleCTA() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    <h2 className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white mb-6 tracking-tight word-keep break-keep" style={{ lineHeight: 1.5 }}>
+                    <h2 className="text-2xl md:text-4xl lg:text-[44px] font-extrabold text-white mb-5 md:mb-6 tracking-tight word-keep break-keep" style={{ lineHeight: 1.5 }}>
                         매출 올리는 진짜 리뷰 관리,<br className="hidden md:block" />
                         지금 바로 경험해 보세요.
                     </h2>
                     
-                    <p className="text-blue-200 text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-blue-200 text-base md:text-lg font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
                         복잡한 절차 없이 3분 만에 내 매장을 연동하고<br className="hidden md:block" />
                         자동화된 리뷰 관리의 편리함을 직접 느껴보세요.
                     </p>
@@ -34,7 +34,7 @@ export default function MiddleCTA() {
                                     href={href}
                                     whileHover={{ scale: 1.03, boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.4)' }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold text-lg md:text-xl shadow-xl transition-all w-full sm:w-auto hover:bg-blue-50"
+                                    className="inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3.5 md:py-4 bg-white text-blue-600 rounded-full font-bold text-base md:text-xl shadow-xl transition-all w-full sm:w-auto hover:bg-blue-50"
                                 >
                                     <Sparkles size={22} className="text-blue-500" />
                                     지금 무료 체험하기

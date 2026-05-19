@@ -68,7 +68,7 @@ const features = [
 // 체크/엑스 아이콘 컴포넌트
 const FeatureValue = ({ value }: { value: boolean | string }) => {
     if (typeof value === 'string') {
-        return <span className="text-gray-700 font-medium">{value}</span>;
+        return <span className="text-gray-700 font-medium whitespace-nowrap text-sm md:text-base">{value}</span>;
     }
     if (value) {
         return (
@@ -98,7 +98,7 @@ export default function Pricing() {
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-4">
                         <span className="gradient-text">요금제</span>를 비교해보세요
                     </h2>
-                    <p className="text-gray-500 text-lg">
+                    <p className="text-gray-500 text-base md:text-lg break-keep">
                         카드 등록, 약정 없이<br className="md:hidden" /> 프로를 무료체험 해보고 결정하세요.
                     </p>
                 </motion.div>
@@ -124,30 +124,30 @@ export default function Pricing() {
 
                     {/* 가격 */}
                     <div className="grid grid-cols-3 border-t border-gray-200">
-                        <div className="p-5 bg-gray-50 flex items-center">
+                        <div className="p-3 md:p-5 bg-gray-50 flex items-center">
                             <span className="font-bold text-gray-900">가격</span>
                         </div>
-                        <div className="p-5 text-center border-l border-gray-200 flex items-center justify-center">
-                            <span className="text-gray-700">{plans.basic.price}</span>
+                        <div className="p-3 md:p-5 text-center border-l border-gray-200 flex items-center justify-center">
+                            <span className="text-gray-700 whitespace-nowrap">{plans.basic.price}</span>
                         </div>
-                        <div className="p-5 text-center bg-blue-50/70 border-l border-blue-100 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-1">
-                            <span className="text-blue-700 font-bold text-xl">{plans.pro.price}</span>
-                            <span className="text-blue-600/70 text-sm">{plans.pro.priceNote}</span>
+                        <div className="p-3 md:p-5 text-center bg-blue-50/70 border-l border-blue-100 flex flex-col md:flex-row items-baseline md:items-baseline justify-center gap-0 md:gap-1">
+                            <span className="text-blue-700 font-bold text-base md:text-xl whitespace-nowrap">{plans.pro.price}</span>
+                            <span className="text-blue-600/70 text-[11px] md:text-sm whitespace-nowrap">{plans.pro.priceNote}</span>
                         </div>
                     </div>
 
                     {/* 연결 가게 수 */}
                     <div className="grid grid-cols-3 border-t border-gray-200">
-                        <div className="p-5 bg-gray-50 flex items-center">
-                            <span className="font-bold text-gray-900">연결 가게 수</span>
+                        <div className="p-3 md:p-5 bg-gray-50 flex items-center">
+                            <span className="font-bold text-gray-900 whitespace-nowrap">연결 가게 수</span>
                         </div>
-                        <div className="p-5 text-center border-l border-gray-200 flex items-center justify-center flex-col">
-                            <span className="text-gray-700">{plans.basic.stores}</span>
-                            <span className="text-gray-500 text-sm">{plans.basic.storesNote}</span>
+                        <div className="p-3 md:p-5 text-center border-l border-gray-200 flex items-center justify-center flex-col">
+                            <span className="text-gray-700 whitespace-nowrap text-sm md:text-base">{plans.basic.stores}</span>
+                            <span className="text-gray-500 text-[11px] md:text-sm whitespace-nowrap">{plans.basic.storesNote}</span>
                         </div>
-                        <div className="p-5 text-center bg-blue-50/70 border-l border-blue-100 flex items-center justify-center flex-col">
-                            <span className="text-gray-700">{plans.pro.stores}</span>
-                            <span className="text-gray-500 text-sm">{plans.pro.storesNote}</span>
+                        <div className="p-3 md:p-5 text-center bg-blue-50/70 border-l border-blue-100 flex items-center justify-center flex-col">
+                            <span className="text-gray-700 whitespace-nowrap text-sm md:text-base">{plans.pro.stores}</span>
+                            <span className="text-gray-500 text-[11px] md:text-sm whitespace-nowrap">{plans.pro.storesNote}</span>
                         </div>
                     </div>
 
@@ -166,10 +166,10 @@ export default function Pricing() {
                         <div key={catIndex}>
                             {/* 카테고리 헤더 */}
                             <div className="grid grid-cols-3 border-t border-gray-200 bg-gray-100/50">
-                                <div className="p-4 col-span-3">
-                                    <span className="font-bold text-gray-800">
-                                        <span className="hidden md:inline">{category.category.replace('\n', ' ')}</span>
-                                        <span className="md:hidden whitespace-pre-line">{category.category}</span>
+                                <div className="p-3 md:p-4 col-span-3">
+                                    <span className="font-bold text-gray-800 text-sm md:text-base">
+                                        <span className="hidden md:inline whitespace-nowrap">{category.category.replace('\n', ' ')}</span>
+                                        <span className="md:hidden whitespace-pre">{category.category}</span>
                                     </span>
                                 </div>
                             </div>
@@ -179,16 +179,16 @@ export default function Pricing() {
                                     key={itemIndex}
                                     className="grid grid-cols-3 border-t border-gray-100"
                                 >
-                                    <div className="p-4 pl-4 md:pl-8 bg-gray-50 flex items-center">
-                                        <span className="text-gray-600 text-sm md:text-base">
-                                            <span className="hidden md:inline">{item.name.replace('\n', ' ')}</span>
-                                            <span className="md:hidden whitespace-pre-line">{item.name}</span>
+                                    <div className="p-3 md:p-4 pl-3 md:pl-8 bg-gray-50 flex items-center">
+                                        <span className="text-gray-600 text-[13px] md:text-base">
+                                            <span className="hidden md:inline whitespace-nowrap">{item.name.replace('\n', ' ')}</span>
+                                            <span className="md:hidden whitespace-pre">{item.name}</span>
                                         </span>
                                     </div>
-                                    <div className="p-4 text-center border-l border-gray-200 flex items-center justify-center">
+                                    <div className="p-3 md:p-4 text-center border-l border-gray-200 flex items-center justify-center">
                                         <FeatureValue value={item.basic} />
                                     </div>
-                                    <div className="p-4 text-center bg-blue-50/70 border-l border-blue-100 flex items-center justify-center">
+                                    <div className="p-3 md:p-4 text-center bg-blue-50/70 border-l border-blue-100 flex items-center justify-center">
                                         <FeatureValue value={item.pro} />
                                     </div>
                                 </div>
@@ -204,20 +204,20 @@ export default function Pricing() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="mt-6 rounded-3xl border border-gray-200 bg-gradient-to-r from-gray-50 to-white p-8 md:p-10"
+                    className="mt-6 rounded-2xl md:rounded-3xl border border-gray-200 bg-gradient-to-r from-gray-50 to-white p-6 md:p-10"
                 >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6">
                         <div>
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                            <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-3">
                                 Enterprise
                             </h3>
-                            <ul className="space-y-2 text-gray-600">
-                                <li className="flex items-center gap-2">
-                                    <Check size={18} className="text-blue-600 flex-shrink-0" />
+                            <ul className="space-y-2 text-gray-600 text-sm md:text-base">
+                                <li className="flex items-start md:items-center gap-2 break-keep">
+                                    <Check size={16} className="text-blue-600 flex-shrink-0 mt-1 md:mt-0 md:w-[18px] md:h-[18px]" />
                                     <span>API 제공, 브랜드 커스텀 등 별도 협의</span>
                                 </li>
-                                <li className="flex items-center gap-2">
-                                    <Check size={18} className="text-blue-600 flex-shrink-0" />
+                                <li className="flex items-start md:items-center gap-2 break-keep">
+                                    <Check size={16} className="text-blue-600 flex-shrink-0 mt-1 md:mt-0 md:w-[18px] md:h-[18px]" />
                                     <span>가맹점 일괄 가입 시 구간에 따른 할인율 적용</span>
                                 </li>
                             </ul>
@@ -226,9 +226,9 @@ export default function Pricing() {
                             href="http://pf.kakao.com/_fzvYG/chat"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-secondary inline-flex items-center gap-2 px-6 py-3 whitespace-nowrap"
+                            className="btn-secondary inline-flex items-center justify-center gap-2 px-5 md:px-6 py-2.5 md:py-3 text-sm md:text-base whitespace-nowrap"
                         >
-                            <MessageCircle size={18} />
+                            <MessageCircle size={16} className="md:w-[18px] md:h-[18px]" />
                             별도 문의
                         </a>
                     </div>

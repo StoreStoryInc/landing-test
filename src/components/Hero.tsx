@@ -7,7 +7,7 @@ import UTMLink from './UTMLink';
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 lg:pt-52 lg:pb-44 px-5 overflow-hidden">
+        <section className="relative pt-28 pb-20 md:pt-44 md:pb-36 lg:pt-52 lg:pb-44 px-5 overflow-hidden">
             {/* 배경 그라데이션 */}
             <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-br from-blue-100/50 via-indigo-50/30 to-transparent rounded-full blur-3xl" />
@@ -42,7 +42,19 @@ export default function Hero() {
                     </h1>
 
                     {/* 서브 카피 */}
-                    <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    {/* 모바일: 명시적 줄바꿈 */}
+                    <p className="md:hidden text-base text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed break-keep">
+                        세일즈랩이 <span className="text-gray-800 font-semibold">리뷰 답글</span>부터
+                        <br />
+                        <span className="text-gray-800 font-semibold">광고 스케줄</span>, <span className="text-gray-800 font-semibold">정산 출금</span>까지 <span className="text-gray-800 font-semibold">자동으로</span>.
+                        <br />
+                        <br />
+                        남는 시간엔 <span className="text-gray-800 font-semibold">'매출 분석 대시보드'</span>로
+                        <br />
+                        진짜 문제를 해결하세요.
+                    </p>
+                    {/* 데스크탑 */}
+                    <p className="hidden md:block text-xl md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed break-keep">
                         세일즈랩이 <span className="text-gray-800 font-semibold">리뷰 답글</span>부터 <span className="text-gray-800 font-semibold">광고 스케줄</span>, <span className="text-gray-800 font-semibold">정산 출금</span>까지 <span className="text-gray-800 font-semibold">자동으로</span>.
                         <br />
                         남는 시간엔 <span className="text-gray-800 font-semibold">'매출 분석 대시보드'</span>로 진짜 문제를 해결하세요.
@@ -67,21 +79,21 @@ export default function Hero() {
                     </div>
 
                     {/* 신뢰 요소 */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-12 text-base md:text-lg font-medium text-gray-500">
-                        <span className="flex items-center gap-2.5">
-                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:gap-10 mt-10 md:mt-12 text-sm md:text-lg font-medium text-gray-500">
+                        <span className="flex items-center gap-2 md:gap-2.5">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             카드 등록 없이 시작
                         </span>
-                        <span className="flex items-center gap-2.5">
-                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <span className="flex items-center gap-2 md:gap-2.5">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             3분 연동
                         </span>
-                        <span className="flex items-center gap-2.5">
-                            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <span className="flex items-center gap-2 md:gap-2.5">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                             최다 플랫폼

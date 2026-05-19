@@ -52,14 +52,14 @@ export default function Automation() {
                     viewport={{ once: true }}
                     className="text-center mb-14 md:mb-20"
                 >
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-6 py-3 rounded-full text-lg font-bold mb-8 shadow-xl shadow-violet-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
-                        <Zap size={20} className="text-yellow-300 fill-yellow-300" />
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-lg font-bold mb-6 md:mb-8 shadow-xl shadow-violet-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
+                        <Zap size={18} className="text-yellow-300 fill-yellow-300 md:w-5 md:h-5" />
                         운영 자동화
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
                         반복 클릭도 <span className="gradient-text">자동</span>으로
                     </h2>
-                    <p className="text-gray-500 text-lg max-w-2xl mx-auto break-keep">
+                    <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto break-keep">
                         리뷰 답글 외에도, 매일 반복되는 운영 업무를 세일즈랩이 대신합니다.
                     </p>
                 </motion.div>
@@ -86,15 +86,15 @@ export default function Automation() {
 
                                     {/* 콘텐츠 */}
                                     <div className="flex-1 min-w-0">
-                                        <div className="flex items-center gap-3 mb-3 flex-wrap">
-                                            <span className={`text-base font-bold px-3 py-1.5 rounded-full bg-gradient-to-r ${item.badgeColor} ${item.badgeTextColor}`}>
+                                        <div className="flex items-center gap-2 md:gap-3 mb-3 flex-wrap">
+                                            <span className={`text-sm md:text-base font-bold px-3 py-1 md:py-1.5 rounded-full bg-gradient-to-r ${item.badgeColor} ${item.badgeTextColor}`}>
                                                 {item.badge}
                                             </span>
-                                            <span className={`text-sm font-semibold px-3 py-1.5 rounded-full ${item.platformColor}`}>
+                                            <span className={`text-xs md:text-sm font-semibold px-3 py-1 md:py-1.5 rounded-full ${item.platformColor}`}>
                                                 {item.platform}
                                             </span>
                                         </div>
-                                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-snug">
+                                        <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 leading-snug">
                                             {item.mobileTitle ? (
                                                 <>
                                                     <span className="md:hidden whitespace-pre-line">{item.mobileTitle}</span>
@@ -102,10 +102,10 @@ export default function Automation() {
                                                 </>
                                             ) : item.title}
                                         </h3>
-                                        <p className="text-blue-600 font-semibold mb-4 text-lg md:text-xl">
+                                        <p className="text-blue-600 font-semibold mb-4 text-base md:text-lg">
                                             {item.subtitle}
                                         </p>
-                                        <p className="text-gray-600 leading-relaxed text-lg md:text-xl break-keep whitespace-pre-line">
+                                        <p className="text-gray-600 leading-relaxed text-base md:text-lg break-keep whitespace-pre-line">
                                             {item.description}
                                         </p>
                                     </div>
@@ -124,7 +124,7 @@ export default function Automation() {
 
                             {/* 실제 이미지 영역 */}
                             <div className="relative w-full mt-6 bg-gray-50/50 border-t border-gray-100 flex justify-center pt-8 md:pt-10 group">
-                                <div className="w-[60%] md:w-[35%] lg:w-[30%] -mb-2 transform group-hover:-translate-y-2 transition-transform duration-500 ease-out">
+                                <div className="w-[50%] md:w-[35%] lg:w-[30%] -mb-2 transform group-hover:-translate-y-2 transition-transform duration-500 ease-out">
                                     <Image
                                         src={item.mockImage}
                                         alt={item.title}

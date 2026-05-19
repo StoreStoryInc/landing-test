@@ -52,7 +52,7 @@ export default function Testimonials() {
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-4">
                         사장님들의 <span className="gradient-text">생생한 후기</span>
                     </h2>
-                    <p className="text-gray-500 text-lg">
+                    <p className="text-gray-500 text-base md:text-lg break-keep">
                         세일즈랩을 사용 중인 사장님들의 실제 후기입니다.
                     </p>
                 </motion.div>
@@ -66,30 +66,30 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: '-50px' }}
                             transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-                            className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-gray-100/80 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group"
+                            className="bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 shadow-sm border border-gray-100/80 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group"
                         >
                             {/* 별점 */}
-                            <div className="flex items-center gap-1.5 mb-6">
+                            <div className="flex items-center gap-1.5 mb-4 md:mb-6">
                                 {[...Array(review.rating)].map((_, i) => (
-                                    <Star key={i} size={20} className="text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-300" />
+                                    <Star key={i} size={18} className="text-yellow-400 fill-yellow-400 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300" />
                                 ))}
                             </div>
                             
                             {/* 리뷰 내용 */}
-                            <p className="text-xl md:text-[22px] font-medium text-gray-800 mb-10 leading-[1.6] word-keep break-keep flex-grow">
+                            <p className="text-base md:text-lg font-medium text-gray-800 mb-8 md:mb-10 leading-[1.6] word-keep break-keep flex-grow">
                                 "{review.quote}"
                             </p>
                             
                             {/* 하단 화자 정보 */}
-                            <div className="flex items-center gap-4 mt-auto">
-                                <div className="w-14 h-14 bg-gradient-to-br from-gray-50 to-blue-50/50 rounded-full flex items-center justify-center text-3xl shadow-sm border border-gray-100">
+                            <div className="flex items-center gap-3 md:gap-4 mt-auto">
+                                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gray-50 to-blue-50/50 rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-gray-100">
                                     {review.avatar}
                                 </div>
                                 <div className="text-left">
-                                    <p className="font-bold text-gray-900 text-lg">
+                                    <p className="font-bold text-gray-900 text-base md:text-lg">
                                         {review.author}
                                     </p>
-                                    <p className="text-blue-600 font-medium text-sm">
+                                    <p className="text-blue-600 font-medium text-xs md:text-sm">
                                         {review.business}
                                     </p>
                                 </div>

@@ -7,18 +7,18 @@ export default function Footer() {
         <footer className="bg-gray-900 text-gray-400 pt-12 pb-32 md:pb-12 px-5">
             <div className="max-w-6xl mx-auto">
                 {/* 로고 */}
-                <div className="mb-8">
+                <div className="mb-6 md:mb-8">
                     <Image
                         src="/service_logo/saleslab_logo.svg"
                         alt="세일즈랩"
                         width={240}
                         height={68}
-                        className="h-12 md:h-14 w-auto object-contain brightness-0 invert"
+                        className="h-10 md:h-14 w-auto object-contain brightness-0 invert"
                     />
                 </div>
 
                 {/* 회사 정보 */}
-                <div className="space-y-2 text-sm text-gray-500 mb-8">
+                <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-500 mb-6 md:mb-8 break-keep leading-relaxed">
                     <p>
                         <span className="text-gray-400">상호명</span> (주)스토어스토리 | <span className="text-gray-400">대표</span> 곽동훈
                     </p>
@@ -40,7 +40,7 @@ export default function Footer() {
                 </div>
 
                 {/* 링크 */}
-                <div className="flex flex-wrap items-center gap-4 text-sm mb-8">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 md:gap-4 text-xs md:text-sm mb-6 md:mb-8">
                     <a
                         href="https://field-pyrite-e66.notion.site/31b4b16ecd1e80bea4bccda5477e6422?source=copy_link"
                         target="_blank"

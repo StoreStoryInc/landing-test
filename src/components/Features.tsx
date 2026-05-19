@@ -61,14 +61,14 @@ export default function Features() {
                     viewport={{ once: true }}
                     className="text-center mb-14 md:mb-20"
                 >
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full text-lg font-bold mb-8 shadow-xl shadow-blue-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
-                        <Zap size={20} className="text-yellow-300 fill-yellow-300" />
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-lg font-bold mb-6 md:mb-8 shadow-xl shadow-blue-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
+                        <Zap size={18} className="text-yellow-300 fill-yellow-300 md:w-5 md:h-5" />
                         핵심 기능
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
                         사장님의 <span className="gradient-text">시간</span>을 <br className="md:hidden" />되찾아드려요
                     </h2>
-                    <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                    <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto break-keep">
                         세일즈랩이 반복 업무를 대신하고, 악성 리뷰에 빠르게 대응하고, 단골을 만들어드립니다.
                     </p>
                 </motion.div>
@@ -96,11 +96,11 @@ export default function Features() {
                                     {/* 콘텐츠 */}
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <span className={`text-base font-bold px-3 py-1.5 rounded-full bg-gradient-to-r ${feature.bgGradient} text-gray-700`}>
+                                            <span className={`text-sm md:text-base font-bold px-3 py-1 md:py-1.5 rounded-full bg-gradient-to-r ${feature.bgGradient} text-gray-700`}>
                                                 {feature.badge}
                                             </span>
                                         </div>
-                                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-snug">
+                                        <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 leading-snug">
                                             {feature.mobileTitle ? (
                                                 <>
                                                     <span className="md:hidden whitespace-pre-line">{feature.mobileTitle}</span>
@@ -108,10 +108,10 @@ export default function Features() {
                                                 </>
                                             ) : feature.title}
                                         </h3>
-                                        <p className="text-blue-600 font-semibold mb-4 text-lg md:text-xl">
+                                        <p className="text-blue-600 font-semibold mb-4 text-base md:text-lg">
                                             {feature.subtitle}
                                         </p>
-                                        <p className="text-gray-600 leading-relaxed text-lg md:text-xl break-keep">
+                                        <p className="text-gray-600 leading-relaxed text-base md:text-lg break-keep">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -130,7 +130,7 @@ export default function Features() {
 
                             {/* 이미지 영역 - 크기 60% 축소 및 디자인 고도화 */}
                             <div className="relative w-full mt-8 bg-gray-50/50 group overflow-hidden border-t border-gray-100 flex justify-center pt-10">
-                                <div className="w-[65%] md:w-[45%] lg:w-[40%] -mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+                                <div className="w-[55%] md:w-[45%] lg:w-[40%] -mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 ease-out">
                                     <Image
                                         src={feature.image}
                                         alt={feature.title}

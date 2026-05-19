@@ -99,9 +99,9 @@ export default function FAQ() {
     return (
         <section className="section-padding bg-white">
             <div className="max-w-4xl mx-auto px-5">
-                <div className="bg-gray-50 rounded-[2.5rem] p-8 md:p-16">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-[#112D4E]">
+                <div className="bg-gray-50 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-16">
+                    <div className="text-center mb-10 md:mb-12">
+                        <h2 className="text-2xl md:text-4xl font-extrabold text-[#112D4E]">
                             자주 묻는 질문
                         </h2>
                     </div>
@@ -116,7 +116,7 @@ export default function FAQ() {
                                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                     className="w-full flex items-center justify-between py-4 md:py-5 text-left group"
                                 >
-                                    <span className="text-lg md:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors pr-8 leading-snug">
+                                    <span className="text-base md:text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors pr-6 md:pr-8 leading-snug break-keep">
                                         {faq.question}
                                     </span>
                                     <motion.span
@@ -137,7 +137,7 @@ export default function FAQ() {
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="pb-6 text-gray-600 leading-relaxed text-base md:text-lg break-keep">
+                                            <div className="pb-6 text-gray-600 leading-relaxed text-sm md:text-base break-keep">
                                                 {faq.answer}
                                             </div>
                                         </motion.div>

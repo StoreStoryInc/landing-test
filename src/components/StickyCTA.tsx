@@ -79,19 +79,19 @@ export default function StickyCTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-[28px] md:text-[38px] lg:text-[46px] font-extrabold text-white leading-tight tracking-tight mb-5">
+                        <h2 className="text-[26px] md:text-[38px] lg:text-[46px] font-extrabold text-white leading-tight tracking-tight mb-4 md:mb-5 break-keep">
                             지금 바로 시작하세요
                         </h2>
-                        <p className="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed">
-                            3분 만에 매장 연결하고, 바로 효과를 경험해보세요.
+                        <p className="text-blue-100 text-base md:text-xl mb-8 md:mb-10 leading-relaxed break-keep">
+                            3분 만에 매장 연결하고,<br className="md:hidden" /> 바로 효과를 경험해보세요.
                         </p>
 
                         {/* 혜택 리스트 */}
-                        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-10">
+                        <div className="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3 mb-8 md:mb-10">
                             {['카드등록 없음', '약정 없음', '자동결제 없음'].map((benefit) => (
-                                <div key={benefit} className="flex items-center gap-2 text-white/90">
-                                    <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
-                                        <Check size={12} className="text-white" />
+                                <div key={benefit} className="flex items-center gap-1.5 md:gap-2 text-white/90 text-sm md:text-base">
+                                    <div className="w-4 h-4 md:w-5 md:h-5 bg-white/20 rounded-full flex items-center justify-center">
+                                        <Check size={10} className="text-white md:w-3 md:h-3" />
                                     </div>
                                     <span className="font-medium">{benefit}</span>
                                 </div>
@@ -104,11 +104,11 @@ export default function StickyCTA() {
                                     href={href}
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="inline-flex items-center gap-3 bg-white text-blue-600 font-bold text-lg py-5 px-12 rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-black/20"
+                                    className="inline-flex items-center gap-2 md:gap-3 bg-white text-blue-600 font-bold text-base md:text-lg py-4 md:py-5 px-8 md:px-12 rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-black/20"
                                 >
-                                    <Sparkles size={20} />
+                                    <Sparkles size={18} className="md:w-5 md:h-5" />
                                     지금 무료체험하기
-                                    <ArrowRight size={20} />
+                                    <ArrowRight size={18} className="md:w-5 md:h-5" />
                                 </motion.a>
                             )}
                         </UTMLink>

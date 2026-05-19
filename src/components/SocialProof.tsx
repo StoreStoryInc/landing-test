@@ -48,7 +48,7 @@ export default function SocialProof() {
                     className="text-center"
                 >
                     {/* 크게 강조된 문구 */}
-                    <h2 className="text-[28px] md:text-[40px] lg:text-[48px] font-extrabold text-gray-900 leading-tight tracking-tight">
+                    <h2 className="text-[26px] md:text-[40px] lg:text-[48px] font-extrabold text-gray-900 leading-tight tracking-tight">
                         전국 <span className="gradient-text">13,000+</span> 사장님이
                         <br className="md:hidden" />
                         <span className="hidden md:inline"> </span>매일 사용합니다
@@ -77,9 +77,9 @@ export default function SocialProof() {
                     {[...logos, ...logos].map((logo, index) => (
                         <div
                             key={index}
-                            className="flex-shrink-0 -mx-[130px] md:-mx-20"
+                            className="flex-shrink-0 -mx-[100px] md:-mx-20"
                         >
-                            <div className="relative w-[460px] md:w-[28rem] h-[134px] md:h-36">
+                            <div className="relative w-[360px] md:w-[28rem] h-[110px] md:h-36">
                                 <Image
                                     src={logo.src}
                                     alt={logo.alt}
