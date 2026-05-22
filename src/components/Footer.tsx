@@ -42,7 +42,7 @@ export default function Footer() {
                 {/* 링크 */}
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 md:gap-4 text-xs md:text-sm mb-6 md:mb-8">
                     <a
-                        href="https://field-pyrite-e66.notion.site/31b4b16ecd1e80bea4bccda5477e6422?source=copy_link"
+                        href="https://www.notion.so/3624b16ecd1e80058e23eead2b91f853?source=copy_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-white transition-colors"
@@ -50,7 +50,7 @@ export default function Footer() {
                         서비스이용약관
                     </a>
                     <a
-                        href="https://field-pyrite-e66.notion.site/3294b16ecd1e80bc8fffd7a78170ce88?source=copy_link"
+                        href="https://www.notion.so/3624b16ecd1e8025bc53f8f45e90a361?source=copy_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-white transition-colors"
