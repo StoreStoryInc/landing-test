@@ -41,7 +41,11 @@ const automations = [
     },
 ];
 
-export default function Automation() {
+interface AutomationProps {
+    badgeText?: string;
+}
+
+export default function Automation({ badgeText = '운영 자동화' }: AutomationProps = {}) {
     return (
         <section id="automation" className="section-padding bg-gradient-to-b from-gray-50 to-white">
             <div className="max-w-6xl mx-auto">
@@ -54,7 +58,7 @@ export default function Automation() {
                 >
                     <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-lg font-bold mb-6 md:mb-8 shadow-xl shadow-violet-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
                         <Zap size={18} className="text-yellow-300 fill-yellow-300 md:w-5 md:h-5" />
-                        운영 자동화
+                        {badgeText}
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
                         반복 클릭도 <span className="gradient-text">자동</span>으로

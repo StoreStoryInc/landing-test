@@ -50,7 +50,11 @@ const features = [
     },
 ];
 
-export default function Features() {
+interface FeaturesProps {
+    badgeText?: string;
+}
+
+export default function Features({ badgeText = '핵심 기능' }: FeaturesProps = {}) {
     return (
         <section id="features" className="section-padding bg-gradient-to-b from-white via-gray-50/50 to-gray-50">
             <div className="max-w-6xl mx-auto">
@@ -63,7 +67,7 @@ export default function Features() {
                 >
                     <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-lg font-bold mb-6 md:mb-8 shadow-xl shadow-blue-500/30 hover:scale-105 transition-transform duration-300 cursor-default">
                         <Zap size={18} className="text-yellow-300 fill-yellow-300 md:w-5 md:h-5" />
-                        핵심 기능
+                        {badgeText}
                     </div>
                     <h2 className="text-[26px] md:text-[36px] lg:text-[44px] font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
                         사장님의 <span className="gradient-text">시간</span>을 <br className="md:hidden" />되찾아드려요

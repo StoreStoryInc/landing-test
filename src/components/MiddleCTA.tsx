@@ -1,10 +1,28 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import UTMLink from './UTMLink';
 
-export default function MiddleCTA() {
+interface MiddleCTAProps {
+    title?: ReactNode;
+    description?: ReactNode;
+}
+
+export default function MiddleCTA({ title, description }: MiddleCTAProps = {}) {
+    const defaultTitle = (
+        <>
+            매출 올리는 진짜 리뷰 관리,<br className="hidden md:block" />
+            지금 바로 경험해 보세요.
+        </>
+    );
+    const defaultDescription = (
+        <>
+            복잡한 절차 없이 3분 만에 내 매장을 연동하고<br className="hidden md:block" />
+            자동화된 리뷰 관리의 편리함을 직접 느껴보세요.
+        </>
+    );
     return (
         <section className="py-20 md:py-28 px-5 bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-950 relative overflow-hidden">
             {/* 배경 은은한 빛 효과 */}
@@ -18,13 +36,11 @@ export default function MiddleCTA() {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                     <h2 className="text-2xl md:text-4xl lg:text-[44px] font-extrabold text-white mb-5 md:mb-6 tracking-tight word-keep break-keep" style={{ lineHeight: 1.5 }}>
-                        매출 올리는 진짜 리뷰 관리,<br className="hidden md:block" />
-                        지금 바로 경험해 보세요.
+                        {title ?? defaultTitle}
                     </h2>
-                    
+
                     <p className="text-blue-200 text-base md:text-lg font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
-                        복잡한 절차 없이 3분 만에 내 매장을 연동하고<br className="hidden md:block" />
-                        자동화된 리뷰 관리의 편리함을 직접 느껴보세요.
+                        {description ?? defaultDescription}
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4">
