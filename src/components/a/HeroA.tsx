@@ -34,7 +34,7 @@ export default function HeroA() {
 
                     {/* 메인 카피 */}
                     <h1 className="text-[36px] md:text-[56px] lg:text-[72px] xl:text-[80px] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-8">
-                        배달앱 운영, 이제
+                        내 가게 운영, 이제
                         <br />
                         <span className="gradient-text">세일즈랩 하나</span>로
                         <br />
@@ -43,18 +43,44 @@ export default function HeroA() {
 
                     {/* 서브 카피 - 모바일 */}
                     <p className="md:hidden text-base text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed break-keep">
-                        <span className="text-gray-800 font-semibold">리뷰 관리 자동화</span>,
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 mr-1.5 align-middle" />
+                            리뷰 관리 자동화
+                        </span>
+                        ,
                         <br />
-                        <span className="text-gray-800 font-semibold">광고 관리 자동화</span>,
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-violet-500 mr-1.5 align-middle" />
+                            광고 관리 자동화
+                        </span>
+                        ,
                         <br />
-                        <span className="text-gray-800 font-semibold">매출 분석 대시보드</span>까지.
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 align-middle" />
+                            매출 분석 대시보드
+                        </span>
+                        까지.
                         <br />
                         <br />
                         흩어진 배달앱 업무를 한 번에 관리하세요.
                     </p>
                     {/* 서브 카피 - 데스크탑 */}
                     <p className="hidden md:block text-xl md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed break-keep">
-                        <span className="text-gray-800 font-semibold">리뷰 관리 자동화</span>, <span className="text-gray-800 font-semibold">광고 관리 자동화</span>, <span className="text-gray-800 font-semibold">매출 분석 대시보드</span>까지.
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-2 h-2 rounded-full bg-blue-500 mr-2 align-middle" />
+                            리뷰 관리 자동화
+                        </span>
+                        ,{' '}
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-2 h-2 rounded-full bg-violet-500 mr-2 align-middle" />
+                            광고 관리 자동화
+                        </span>
+                        ,{' '}
+                        <span className="font-bold text-gray-900 whitespace-nowrap">
+                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2 align-middle" />
+                            매출 분석 대시보드
+                        </span>
+                        까지.
                         <br />
                         흩어진 배달앱 업무를 한 번에 관리하세요.
                     </p>
