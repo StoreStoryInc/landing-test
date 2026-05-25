@@ -5,12 +5,22 @@ import Image from 'next/image';
 
 import UTMLink from './UTMLink';
 
-export default function Header() {
-    const navItems = [
-        { label: '기능 소개', href: '#features' },
-        { label: '대시보드', href: '#dashboard' },
-        { label: '요금제', href: '#pricing' },
-    ];
+interface NavItem {
+    label: string;
+    href: string;
+}
+
+interface HeaderProps {
+    navItems?: NavItem[];
+}
+
+const defaultNavItems: NavItem[] = [
+    { label: '기능 소개', href: '#features' },
+    { label: '대시보드', href: '#dashboard' },
+    { label: '요금제', href: '#pricing' },
+];
+
+export default function Header({ navItems = defaultNavItems }: HeaderProps = {}) {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-100/50">

@@ -16,7 +16,14 @@ import Footer from '@/components/Footer';
 export default function VariantA() {
     return (
         <main className="min-h-screen">
-            <Header />
+            <Header
+                navItems={[
+                    { label: '리뷰 관리', href: '#features' },
+                    { label: '광고 관리', href: '#automation' },
+                    { label: '대시보드', href: '#dashboard' },
+                    { label: '요금제', href: '#pricing' },
+                ]}
+            />
             <HeroA />
             <PlatformIntegrations />
             <SocialProof />
