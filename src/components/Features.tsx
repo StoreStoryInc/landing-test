@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { MessageSquareText, Bell, Users, Zap } from 'lucide-react';
+import { MessageSquareText, Bell, Users, Zap, CalendarClock } from 'lucide-react';
 
 const features = [
     {
@@ -40,13 +40,36 @@ const features = [
         badge: '단골 만들기',
         title: "'잊은 고객'을 '단골'로 만듭니다.",
         mobileTitle: "'잊은 고객'을\n'단골'로 만듭니다.",
-        subtitle: '재주문 타이밍 맞춤 답글',
-        description: '각기 다른 고객들의 식사시간을 추정해 답글을 달아 재주문을 유도합니다.',
+        subtitle: '재주문 유도 답글 + 배민 2차 답글까지 한 번에',
+        description: (
+            <>
+                고객별 주문시간에 맞추어 답글을 달아 재주문을 유도하고,
+                <br className="hidden md:block" /> 1~2주 뒤 2차 답글을 자동 등록해 노출을 극대화 할 수 있습니다.
+            </>
+        ),
         gradient: 'from-emerald-500 to-teal-600',
         bgGradient: 'from-emerald-50 to-teal-50',
         iconBg: 'bg-gradient-to-br from-emerald-500 to-teal-600',
         stat: { value: '+32%', label: '재주문율' },
         image: '/Features/feature3.webp',
+    },
+    {
+        icon: CalendarClock,
+        badge: '예약 등록',
+        title: '정해둔 시간에 예약 답글',
+        mobileTitle: '정해둔 시간에\n예약 답글',
+        subtitle: '내가 설정해둔 시간에 맞추어 답글을 자동 등록',
+        description: (
+            <>
+                추천 시간이 아닌, 내가 설정한 시간에 일괄 등록을 예약할 수도 있습니다.
+                <br className="hidden md:block" /> 원하시는 시간대가 있다면 그대로 설정해보세요.
+            </>
+        ),
+        gradient: 'from-amber-500 to-orange-500',
+        bgGradient: 'from-amber-50 to-orange-50',
+        iconBg: 'bg-gradient-to-br from-amber-500 to-orange-500',
+        stat: { value: '시간 지정', label: '예약 등록' },
+        image: '/Features/feature4.png',
     },
 ];
 
@@ -88,7 +111,7 @@ export default function Features({ badgeText = '핵심 기능' }: FeaturesProps 
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             className="card p-0 overflow-hidden" // 패딩 제거하고 overflow-hidden 추가
                         >
-                            <div className="p-6 md:p-8 lg:p-10 pb-0 md:pb-0 lg:pb-0"> {/* 상단 텍스트 영역 패딩 */}
+                            <div className={`p-6 md:p-8 lg:p-10 ${feature.image ? 'pb-0 md:pb-0 lg:pb-0' : ''}`}> {/* 상단 텍스트 영역 패딩 */}
                                 <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-8 mb-8">
                                     {/* 아이콘 */}
                                     <div className="flex-shrink-0">
@@ -133,17 +156,19 @@ export default function Features({ badgeText = '핵심 기능' }: FeaturesProps 
                             </div>
 
                             {/* 이미지 영역 - 크기 60% 축소 및 디자인 고도화 */}
-                            <div className="relative w-full mt-8 bg-gray-50/50 group overflow-hidden border-t border-gray-100 flex justify-center pt-10">
-                                <div className="w-[55%] md:w-[45%] lg:w-[40%] -mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                                    <Image
-                                        src={feature.image}
-                                        alt={feature.title}
-                                        width={800}
-                                        height={600}
-                                        className="w-full h-auto rounded-t-2xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] ring-1 ring-gray-900/5"
-                                    />
+                            {feature.image && (
+                                <div className="relative w-full mt-8 bg-gray-50/50 group overflow-hidden border-t border-gray-100 flex justify-center pt-10">
+                                    <div className="w-[55%] md:w-[45%] lg:w-[40%] -mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+                                        <Image
+                                            src={feature.image}
+                                            alt={feature.title}
+                                            width={800}
+                                            height={600}
+                                            className="w-full h-auto rounded-t-2xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] ring-1 ring-gray-900/5"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </motion.div>
                     ))}
                 </div>

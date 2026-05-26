@@ -26,11 +26,11 @@ export default function VariantA() {
             />
             <HeroA />
             <PlatformIntegrations />
-            <SocialProof />
             <SolutionOverview />
             <Features badgeText="리뷰 관리 자동화" />
             <Automation badgeText="광고 관리 자동화" />
             <Dashboard />
+            <SocialProof />
             <MiddleCTA
                 title={
                     <>
