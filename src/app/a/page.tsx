@@ -16,22 +16,22 @@ import Footer from '@/components/Footer';
 export default function VariantA() {
     return (
         <main className="min-h-screen">
-            <Header
+            <div data-track="header"><Header
                 navItems={[
                     { label: '리뷰 관리', href: '#features' },
                     { label: '광고 관리', href: '#automation' },
                     { label: '대시보드', href: '#dashboard' },
                     { label: '요금제', href: '#pricing' },
                 ]}
-            />
-            <HeroA />
-            <PlatformIntegrations />
-            <SolutionOverview />
-            <Features badgeText="리뷰 관리 자동화" />
-            <Automation badgeText="광고 관리 자동화" />
-            <Dashboard />
-            <SocialProof />
-            <MiddleCTA
+            /></div>
+            <div data-track="hero"><HeroA /></div>
+            <div data-track="platforms"><PlatformIntegrations /></div>
+            <div data-track="solution"><SolutionOverview /></div>
+            <div data-track="features"><Features badgeText="리뷰 관리 자동화" /></div>
+            <div data-track="automation"><Automation badgeText="광고 관리 자동화" /></div>
+            <div data-track="dashboard"><Dashboard /></div>
+            <div data-track="social-proof"><SocialProof /></div>
+            <div data-track="middle-cta"><MiddleCTA
                 title={
                     <>
                         매출 올리는 진짜 배달앱 운영,
@@ -55,12 +55,12 @@ export default function VariantA() {
                         </span>
                     </>
                 }
-            />
-            <Testimonials />
-            <Pricing />
-            <FAQ />
-            <StickyCTA />
-            <Footer />
+            /></div>
+            <div data-track="testimonials"><Testimonials /></div>
+            <div data-track="pricing"><Pricing /></div>
+            <div data-track="faq"><FAQ /></div>
+            <div data-track="bottom-cta"><StickyCTA /></div>
+            <div data-track="footer"><Footer /></div>
         </main>
     );
 }

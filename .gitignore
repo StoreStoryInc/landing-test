@@ -36,3 +36,9 @@ next-env.d.ts
 
 # claude code (local dev config)
 .claude/
+
+# 애널리틱스 자격증명 (웹앱 URL / 배포ID / token) — 절대 커밋 금지
+analytics/랜딩트래킹 ID,URL
+analytics/*credential*
+analytics/*secret*
+analytics/*.local.*

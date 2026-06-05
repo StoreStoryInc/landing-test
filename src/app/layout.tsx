@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
+import Analytics from "@/components/Analytics";
 
 export const metadata: Metadata = {
     title: "세일즈랩 (구 리뷰닥터) - AI 리뷰 관리 & 매출 분석 대시보드",
@@ -41,6 +42,7 @@ export default function RootLayout({
                 <Suspense fallback={null}>
                     <MetaPixel />
                 </Suspense>
+                <Analytics />
             </body>
         </html>
     );

@@ -15,19 +15,19 @@ import Footer from '@/components/Footer';
 export default function Home() {
     return (
         <main className="min-h-screen">
-            <Header />
-            <Hero />
-            <SocialProof />
-            <Features />
-            <Automation />
-            <Dashboard />
-            <PlatformIntegrations />
-            <MiddleCTA />
-            <Testimonials />
-            <Pricing />
-            <FAQ />
-            <StickyCTA />
-            <Footer />
+            <div data-track="header"><Header /></div>
+            <div data-track="hero"><Hero /></div>
+            <div data-track="social-proof"><SocialProof /></div>
+            <div data-track="features"><Features /></div>
+            <div data-track="automation"><Automation /></div>
+            <div data-track="dashboard"><Dashboard /></div>
+            <div data-track="platforms"><PlatformIntegrations /></div>
+            <div data-track="middle-cta"><MiddleCTA /></div>
+            <div data-track="testimonials"><Testimonials /></div>
+            <div data-track="pricing"><Pricing /></div>
+            <div data-track="faq"><FAQ /></div>
+            <div data-track="bottom-cta"><StickyCTA /></div>
+            <div data-track="footer"><Footer /></div>
         </main>
     );
 }
