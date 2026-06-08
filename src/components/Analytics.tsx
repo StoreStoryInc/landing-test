@@ -90,7 +90,10 @@ export default function Analytics() {
                     }
                 }
             },
-            { threshold: 0.4 } // 섹션의 40% 이상 보이면 "확인"으로 간주
+            // "섹션 상단이 화면 상위 65%에 들어오면 도달"로 집계.
+            // 뷰포트 하단 35%를 잘라내고(threshold 0) 판정 → 화면보다 긴 섹션도 정확히 잡힘.
+            // (이전 threshold:0.4 방식은 긴 섹션이 한 화면에 40% 안 보여서 누락됐음)
+            { threshold: 0, rootMargin: '0px 0px -35% 0px' }
         );
         observed.forEach((el) => io.observe(el));
 
