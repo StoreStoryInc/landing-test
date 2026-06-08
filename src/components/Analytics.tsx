@@ -38,6 +38,7 @@ export default function Analytics() {
         if (typeof window === 'undefined') return;
 
         const start = Date.now();
+        const sid = uuid(); // 방문당 1회 고정 — 여러 번 전송돼도 서버에서 같은 방문으로 합쳐짐
         // 탭이 보이는 동안만 누적(백그라운드 시간 제외)
         let activeMs = 0;
         let lastResume = Date.now();
@@ -45,7 +46,6 @@ export default function Analytics() {
         const sections = new Set<string>();
         const ctas = new Set<string>();
         const navs = new Set<string>(); // 헤더 내 버튼/내비 클릭
-        let sent = false;
 
         // PC vs 모바일 (user-agent 기준)
         const device = /Mobi|Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent)
@@ -90,10 +90,11 @@ export default function Analytics() {
                     }
                 }
             },
-            // "섹션 상단이 화면 상위 65%에 들어오면 도달"로 집계.
-            // 뷰포트 하단 35%를 잘라내고(threshold 0) 판정 → 화면보다 긴 섹션도 정확히 잡힘.
+            // "섹션 상단이 화면 상위 80%에 들어오면 도달"로 집계.
+            // 뷰포트 하단 20%만 잘라내고(threshold 0) 판정 → 긴 섹션도 잡히고,
+            // 페이지 맨 끝의 짧은 섹션(footer/하단 CTA)도 거의 놓치지 않음.
             // (이전 threshold:0.4 방식은 긴 섹션이 한 화면에 40% 안 보여서 누락됐음)
-            { threshold: 0, rootMargin: '0px 0px -35% 0px' }
+            { threshold: 0, rootMargin: '0px 0px -20% 0px' }
         );
         observed.forEach((el) => io.observe(el));
 
@@ -133,19 +134,19 @@ export default function Analytics() {
             return Array.from(set);
         };
 
-        // 4) 가시성 누적 + 전송
-        const flush = () => {
-            if (sent) return;
-            sent = true;
-            if (document.visibilityState !== 'hidden') {
-                activeMs += Date.now() - lastResume;
-            }
+        // 4) 전송. 떠날 때마다 "현재까지의 스냅샷"을 같은 sid로 보냄.
+        //    탭을 백그라운드로 보냈다가 복귀한 뒤의 CTA 클릭·스크롤도 다음 전송에 포함됨.
+        //    서버(doGet)가 같은 sid는 가장 완전한 1건으로 합쳐 중복 집계를 막음.
+        //    (이전엔 첫 hidden에서 영구히 잠가 복귀 후 전환을 통째로 잃었음)
+        const send = () => {
+            const visibleNow = document.visibilityState === 'visible';
+            const dur = Math.round((activeMs + (visibleNow ? Date.now() - lastResume : 0)) / 1000);
             const payload = {
-                sid: uuid(),
+                sid,
                 page: pathname || window.location.pathname,
                 variant: (pathname || window.location.pathname).startsWith('/a') ? 'a' : 'main',
                 device,
-                dur: Math.round((activeMs || Date.now() - start) / 1000),
+                dur,
                 depth: maxDepth,
                 sections: Array.from(sections),
                 cta: Array.from(ctas),
@@ -164,20 +165,20 @@ export default function Analytics() {
 
         const onVisibility = () => {
             if (document.visibilityState === 'hidden') {
-                activeMs += Date.now() - lastResume;
-                flush(); // 모바일에서 가장 신뢰도 높은 종료 신호
+                activeMs += Date.now() - lastResume; // 방금 끝난 가시 구간 누적
+                send();                              // 모바일에서 가장 신뢰도 높은 종료 신호
             } else {
-                lastResume = Date.now();
+                lastResume = Date.now();             // 복귀 — 다음 가시 구간 시작점
             }
         };
         document.addEventListener('visibilitychange', onVisibility);
-        window.addEventListener('pagehide', flush);
+        window.addEventListener('pagehide', send);
 
         return () => {
             window.removeEventListener('scroll', onScroll);
             document.removeEventListener('click', onClick, true);
             document.removeEventListener('visibilitychange', onVisibility);
-            window.removeEventListener('pagehide', flush);
+            window.removeEventListener('pagehide', send);
             io.disconnect();
         };
     }, [pathname]);

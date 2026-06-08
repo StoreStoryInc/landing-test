@@ -39,6 +39,14 @@ function sheet_() {
 
 // 방문 1건 수신 → 1행 append
 function doPost(e) {
+  // 동시 쓰기로 행이 덮어써지지 않도록 잠금 (광고 스파이크 대비)
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(15000);
+  } catch (lockErr) {
+    return ContentService.createTextOutput(JSON.stringify({ ok: false, err: 'busy' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
   try {
     var d = JSON.parse(e.postData.contents);
     var nav = d.nav || [];          // 클릭한 헤더 버튼
@@ -69,6 +77,8 @@ function doPost(e) {
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({ ok: false, err: String(err) }))
       .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
   }
 }
 
@@ -87,8 +97,17 @@ function doGet(e) {
   var col = {};
   head.forEach(function (h, i) { col[h] = i; });
 
+  // 같은 sid는 여러 번 전송될 수 있음(백그라운드 복귀 등) → 가장 완전한(dur 최대) 1건만 사용
+  var bySid = {};
+  values.forEach(function (r, i) {
+    var sid = r[col.sid] || ('__norow' + i); // sid 없으면 각각 고유 처리
+    var prev = bySid[sid];
+    if (!prev || (Number(r[col.dur]) || 0) >= (Number(prev[col.dur]) || 0)) bySid[sid] = r;
+  });
+  var rows = Object.keys(bySid).map(function (k) { return bySid[k]; });
+
   var groups = { all: bucket_(), main: bucket_(), a: bucket_() };
-  values.forEach(function (r) {
+  rows.forEach(function (r) {
     var variant = r[col.variant] === 'a' ? 'a' : 'main';
     add_(groups.all, r, col);
     add_(groups[variant], r, col);
