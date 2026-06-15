@@ -58,9 +58,10 @@ const features = [
         ],
     },
     {
-        category: 'POS 매출 연동\n(가게 수 미포함·무료)',
+        category: '홀 매출·정산 연동\n(가게 수 미포함·무료)',
         items: [
             { name: 'POS 매출 연동', basic: true, pro: true },
+            { name: '여신금융협회\n(카드입금) 연동', basic: true, pro: true },
         ],
     },
 ];
@@ -151,14 +152,11 @@ export default function Pricing() {
                         </div>
                     </div>
 
-                    {/* POS 안내 */}
-                    <div className="grid grid-cols-3 border-t border-gray-200">
-                        <div className="bg-gray-50" />
-                        <div className="col-span-2 p-3 md:p-4 border-l border-gray-200 bg-emerald-50/40 text-center">
-                            <span className="text-xs md:text-sm text-emerald-700 font-semibold break-keep">
-                                ✓ POS매출 연동은 가게 수에 포함되지 않으며, 무료로 추가됩니다.
-                            </span>
-                        </div>
+                    {/* 홀 매출·정산 연동 안내 */}
+                    <div className="border-t border-gray-200 p-3 md:p-4 bg-emerald-50/40 text-center">
+                        <span className="text-xs md:text-sm text-emerald-700 font-semibold break-keep">
+                            ✓ 홀 매출·정산 연동은 가게 수에 포함되지 않으며, 무료로 추가됩니다.
+                        </span>
                     </div>
 
                     {/* 기능 카테고리별 */}
