@@ -8,7 +8,7 @@
  * /api/track 이 구글시트(Apps Script 웹앱)로 전달합니다.
  *
  * 수집 항목:
- *  - page / variant : '/' (main) vs '/a'
+ *  - page / variant : '/' (main) / '/a' / '/b'
  *  - utm_*          : 유입 UTM
  *  - dur            : 체류시간(초)
  *  - depth          : 최대 스크롤 깊이(0~100%)
@@ -144,7 +144,11 @@ export default function Analytics() {
             const payload = {
                 sid,
                 page: pathname || window.location.pathname,
-                variant: (pathname || window.location.pathname).startsWith('/a') ? 'a' : 'main',
+                variant: (pathname || window.location.pathname).startsWith('/a')
+                    ? 'a'
+                    : (pathname || window.location.pathname).startsWith('/b')
+                      ? 'b'
+                      : 'main',
                 device,
                 dur,
                 depth: maxDepth,

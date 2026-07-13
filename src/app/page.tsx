@@ -10,6 +10,7 @@ import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import StickyCTA from '@/components/StickyCTA';
+import CardPayment from '@/components/CardPayment';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
             <div data-track="features"><Features /></div>
             <div data-track="automation"><Automation /></div>
             <div data-track="dashboard"><Dashboard /></div>
+            <div data-track="card-payment"><CardPayment /></div>
             <div data-track="platforms"><PlatformIntegrations /></div>
             <div data-track="middle-cta"><MiddleCTA /></div>
             <div data-track="testimonials"><Testimonials /></div>

@@ -11,6 +11,7 @@ import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import StickyCTA from '@/components/StickyCTA';
+import CardPayment from '@/components/CardPayment';
 import Footer from '@/components/Footer';
 
 export default function VariantA() {
@@ -30,6 +31,7 @@ export default function VariantA() {
             <div data-track="features"><Features badgeText="리뷰 관리 자동화" /></div>
             <div data-track="automation"><Automation badgeText="광고 관리 자동화" /></div>
             <div data-track="dashboard"><Dashboard /></div>
+            <div data-track="card-payment"><CardPayment /></div>
             <div data-track="social-proof"><SocialProof /></div>
             <div data-track="middle-cta"><MiddleCTA
                 title={
