@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, X, MessageCircle, BadgePercent } from 'lucide-react';
+import { Check, X, MessageCircle } from 'lucide-react';
 
 // 요금제 데이터
 const plans = {
@@ -86,12 +86,7 @@ const FeatureValue = ({ value }: { value: boolean | string }) => {
     );
 };
 
-interface PricingProps {
-    // /b(월세 카드결제) 광고 랜딩에서만 카드결제 수수료 이벤트 안내를 노출한다.
-    showCardFeeEvent?: boolean;
-}
-
-export default function Pricing({ showCardFeeEvent = false }: PricingProps = {}) {
+export default function Pricing() {
     return (
         <section id="pricing" className="section-padding bg-white">
             <div className="max-w-4xl mx-auto">
@@ -201,28 +196,6 @@ export default function Pricing({ showCardFeeEvent = false }: PricingProps = {})
                     ))}
 
                 </motion.div>
-
-                {/* 월세 카드결제 수수료 안내 (/b 전용) */}
-                {showCardFeeEvent && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.15 }}
-                        className="mt-6 rounded-2xl md:rounded-3xl border border-blue-100 bg-gradient-to-b from-blue-50/60 to-white p-6 md:p-8 text-center"
-                    >
-                        <div className="flex items-center justify-center gap-1.5 mb-2">
-                            <BadgePercent size={18} className="text-blue-600" />
-                            <span className="text-sm font-semibold text-blue-700">월세 카드결제 이벤트</span>
-                        </div>
-                        <p className="text-xl md:text-3xl font-extrabold text-gray-900 break-keep">
-                            7월 결제분 <span className="gradient-text">카드 수수료 0%</span>
-                        </p>
-                        <p className="text-xs md:text-sm text-gray-400 mt-1.5 break-keep">
-                            2026년 7월 31일까지 결제분 한정. 이벤트 종료 후에는 위 요금표의 카드결제 수수료율이 적용됩니다.
-                        </p>
-                    </motion.div>
-                )}
 
                 {/* Enterprise 섹션 */}
                 <motion.div

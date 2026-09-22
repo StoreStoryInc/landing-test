@@ -8,7 +8,7 @@ import UTMLink from '@/components/UTMLink';
 
 const SIGNIN_URL = 'https://www.saleslab.co.kr/auth/signin?&redirectUrl=/dashboard';
 
-// ① Hero — 월세 훅 + 7월 0% 오퍼를 첫 화면에서 완결(결정 A: ② 흡수).
+// ① Hero — 월세 카드결제 훅을 첫 화면에서 완결(결정 A: ② 흡수).
 // 세일즈랩 언급 없음. CTA 목적지는 기존 로그인(결정: 재사용).
 export default function HeroB() {
     return (
@@ -22,7 +22,7 @@ export default function HeroB() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                    {/* 배지 — 7월 한정 오퍼(조건 명시, 표시광고법) */}
+                    {/* 배지 — 핵심 오퍼 요약 */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -33,7 +33,7 @@ export default function HeroB() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
                         </span>
-                        7월 한정 · 카드 수수료 0%
+                        월세도 카드로 · 할부 가능
                     </motion.div>
 
                     <h1 className="text-[36px] md:text-[56px] lg:text-[72px] xl:text-[80px] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-8">
@@ -46,16 +46,13 @@ export default function HeroB() {
                     <p className="md:hidden text-base text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed break-keep">
                         목돈 나가는 월세, 이제 카드로.
                         <br />
-                        <span className="font-bold text-gray-900">7월 한 달은 카드 수수료도 0%</span>입니다.
-                        <br />
-                        <span className="text-sm text-gray-400">(2026년 7월 31일까지)</span>
+                        정산 기다릴 필요 없이, <span className="font-bold text-gray-900">할부로 나눠서</span>.
                     </p>
                     {/* 서브 — 데스크탑 */}
                     <p className="hidden md:block text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed break-keep">
-                        목돈 나가는 월세, 이제 카드로 내세요.{' '}
-                        <span className="font-bold text-gray-900">7월 한 달은 카드 수수료도 0%</span>입니다.
+                        목돈 나가는 월세, 이제 카드로 내세요.
                         <br />
-                        <span className="text-base text-gray-400">(2026년 7월 31일까지)</span>
+                        정산 기다릴 필요 없이, <span className="font-bold text-gray-900">할부로 나눠서</span> 낼 수 있습니다.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
@@ -78,7 +75,7 @@ export default function HeroB() {
                     {/* 신뢰 요소 — '완료'를 과약속하지 않음(낚임 방어) */}
                     <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:gap-10 mt-10 md:mt-12 text-sm md:text-lg font-medium text-gray-500">
                         <TrustItem>카드만 있으면 시작</TrustItem>
-                        <TrustItem>7월 31일까지 수수료 0%</TrustItem>
+                        <TrustItem>할부로 나눠 결제</TrustItem>
                         <TrustItem>3분이면 신청</TrustItem>
                     </div>
                 </motion.div>

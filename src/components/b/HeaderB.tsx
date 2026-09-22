@@ -17,7 +17,6 @@ export default function HeaderB() {
                     <span className="inline-flex items-center gap-2 font-bold text-gray-900 text-base md:text-lg">
                         <CalendarClock size={18} className="text-blue-600" />
                         월세 카드결제
-                        <span className="hidden sm:inline text-blue-600 font-semibold">· 7월 31일까지 수수료 0%</span>
                     </span>
 
                     <UTMLink href={SIGNIN_URL}>

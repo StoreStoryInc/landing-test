@@ -10,14 +10,14 @@ import SecondaryCtaB from '@/components/b/SecondaryCtaB';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: '월세 카드결제 | 7월 한 달 카드 수수료 0% 이벤트',
+    title: '월세 카드결제 | 이번 달 월세, 카드로 내세요',
     description:
-        '이번 달 월세, 카드로 내세요. 7월 한 달 카드 수수료 0%. 정산 엇박자·할부·카드 혜택까지 — 매장 자금 흐름을 한눈에.',
+        '이번 달 월세, 카드로 내세요. 정산 엇박자·할부·카드 혜택까지 — 매장 자금 흐름을 한눈에.',
     // 광고 전용 유입 랜딩 — 검색 노출 제외(훅-only 페이지의 SEO 혼선 방지)
     robots: { index: false, follow: false },
     openGraph: {
-        title: '월세 카드결제 | 7월 카드 수수료 0%',
-        description: '이번 달 월세, 카드로. 7월 한정 카드 수수료 0%.',
+        title: '월세 카드결제 | 이번 달 월세, 카드로',
+        description: '이번 달 월세, 카드로. 정산 기다릴 필요 없이 할부로 나눠 내세요.',
         type: 'website',
         locale: 'ko_KR',
     },
@@ -32,7 +32,7 @@ export default function VariantB() {
             <div data-track="benefits"><BenefitsB /></div>
             <div data-track="solution"><SolutionOverviewB /></div>
             <div data-track="social-proof"><SocialProof /></div>
-            <div data-track="pricing"><Pricing showCardFeeEvent /></div>
+            <div data-track="pricing"><Pricing /></div>
             <div data-track="bottom-cta"><SecondaryCtaB /></div>
             <div data-track="footer"><Footer /></div>
         </main>

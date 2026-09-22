@@ -32,7 +32,7 @@ export default function Footer() {
                         <span className="text-gray-400">주소</span> 서울 영등포구 신풍로 28, 2층 4호 청년쿡 푸드테크센터
                     </p>
                     <p>
-                        <span className="text-gray-400">고객센터</span> 0507-1381-0596 (24시간)
+                        <span className="text-gray-400">고객센터</span> 1644-6568 (24시간)
                     </p>
                     <p>
                         <span className="text-gray-400">이메일</span> contact@storestory.co.kr
