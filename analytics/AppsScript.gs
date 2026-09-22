@@ -83,6 +83,16 @@ function doPost(e) {
 }
 
 // 통계 조회 (?stats=1&token=...) — 사람이 보거나 Claude가 읽어서 평균 제시할 때 사용
+//
+// 선택 필터 (광고 트래픽만 보거나 노이즈 제거용). 없으면 기존과 동일(전체 집계):
+//   &utmOnly=1          UTM 5종 중 하나라도 값이 있는 방문만 = 광고 유입. organic/direct/내부 테스트 제외
+//   &utm_source=meta    특정 소스만 (utm_source 정확히 일치)
+//   &device=mobile      디바이스 한정 (pc | mobile)
+//   &since=2026-06-08   해당 날짜(KST 00:00) 이후 방문만 (예: 측정 버그수정 후 데이터만)
+//   &raw=1             요약 대신 방문별 "원본 행"을 그대로 반환 (중앙값·교차분석 등 임의 분석용).
+//                      위 필터와 조합 가능. 예: &raw=1&utmOnly=1
+// 응답의 filter 필드로 적용된 필터를 echo. 어떤 유입이 있는지 보려면 응답의
+// utmSourceBreakdown / referrerBreakdown 을 확인 (광고 링크에 UTM이 실제로 붙는지 검증용).
 function doGet(e) {
   var p = (e && e.parameter) || {};
   if (!p.stats) return ContentService.createTextOutput('OK');
@@ -97,18 +107,67 @@ function doGet(e) {
   var col = {};
   head.forEach(function (h, i) { col[h] = i; });
 
-  // 같은 sid는 여러 번 전송될 수 있음(백그라운드 복귀 등) → 가장 완전한(dur 최대) 1건만 사용
+  // ---- 행 필터 ----
+  var UTM_COLS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  function hasUtm_(r) {
+    for (var i = 0; i < UTM_COLS.length; i++) {
+      if (String(r[col[UTM_COLS[i]]] || '').trim() !== '') return true;
+    }
+    return false;
+  }
+  function pass_(r) {
+    if (p.utmOnly && !hasUtm_(r)) return false;
+    if (p.utm_source && String(r[col.utm_source] || '') !== p.utm_source) return false;
+    if (p.device && String(r[col.device] || '') !== p.device) return false;
+    // 시트가 ts를 날짜값으로 저장하는 경우가 있어 tsKst_로 'yyyy-MM-dd HH:mm:ss'(KST) 문자열화 후 비교
+    if (p.since && tsKst_(r[col.ts]) < p.since) return false;
+    return true;
+  }
+
+  // 같은 sid는 여러 번 전송될 수 있음(백그라운드 복귀 등) → 가장 완전한(dur 최대) 1건만 사용.
+  // 필터는 dedup 전에 적용(통과한 행만 후보로). filtered=중복 포함 물리 행, rows=방문당 1행.
+  var filtered = [];
   var bySid = {};
   values.forEach(function (r, i) {
+    if (!pass_(r)) return;
+    filtered.push(r);
     var sid = r[col.sid] || ('__norow' + i); // sid 없으면 각각 고유 처리
     var prev = bySid[sid];
     if (!prev || (Number(r[col.dur]) || 0) >= (Number(prev[col.dur]) || 0)) bySid[sid] = r;
   });
   var rows = Object.keys(bySid).map(function (k) { return bySid[k]; });
 
-  var groups = { all: bucket_(), main: bucket_(), a: bucket_() };
+  // 원본 행 덤프 — 요약 대신 행을 헤더 키로 그대로 반환. 중앙값·교차분석 등 임의 분석용.
+  //   &raw=1   : 방문당 1행 (중복 beacon 병합 = 분석용 깨끗한 전체)
+  //   &raw=all : 중복 포함 물리 행 전체 (시트 글자 그대로)
+  // 위 필터(utmOnly/utm_source/device/since)도 함께 적용됨. 토큰으로 보호.
+  // 데이터가 커지면 &since= 로 범위를 좁혀 호출.
+  if (p.raw) {
+    var src = (p.raw === 'all') ? filtered : rows;
+    var dump = src.map(function (r) {
+      var o = {};
+      head.forEach(function (h, i) { o[h] = (h === 'ts') ? tsKst_(r[i]) : r[i]; });
+      return o;
+    });
+    return ContentService.createTextOutput(JSON.stringify({
+      ok: true,
+      generatedAt: new Date().toISOString(),
+      mode: (p.raw === 'all') ? 'all-rows' : 'per-visit',
+      deduped: p.raw !== 'all',
+      filter: {
+        utmOnly: !!p.utmOnly, utm_source: p.utm_source || null,
+        device: p.device || null, since: p.since || null
+      },
+      count: dump.length,
+      headers: head,
+      rows: dump
+    }, null, 2)).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  var groups = { all: bucket_(), main: bucket_(), a: bucket_(), b: bucket_() };
   rows.forEach(function (r) {
-    var variant = r[col.variant] === 'a' ? 'a' : 'main';
+    var v = r[col.variant];
+    var variant = v === 'a' ? 'a' : v === 'b' ? 'b' : 'main'; // 'b'도 분리(이전엔 main에 섞임)
     add_(groups.all, r, col);
     add_(groups[variant], r, col);
   });
@@ -116,18 +175,34 @@ function doGet(e) {
   var out = {
     ok: true,
     generatedAt: new Date().toISOString(),
+    filter: {
+      utmOnly: !!p.utmOnly,
+      utm_source: p.utm_source || null,
+      device: p.device || null,
+      since: p.since || null
+    },
     all: summarize_(groups.all),
     main: summarize_(groups.main),
-    a: summarize_(groups.a)
+    a: summarize_(groups.a),
+    b: summarize_(groups.b)
   };
   return ContentService.createTextOutput(JSON.stringify(out, null, 2))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
+// 시트가 ts를 날짜값(Date)으로 저장하기도 함 → 항상 KST 'yyyy-MM-dd HH:mm:ss' 문자열로 정규화
+function tsKst_(v) {
+  if (Object.prototype.toString.call(v) === '[object Date]') {
+    return Utilities.formatDate(v, 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
+  }
+  return String(v == null ? '' : v);
+}
+
 function bucket_() {
   return {
     n: 0, durSum: 0, depthSum: 0, ctaVisits: 0,
-    ctaBy: {}, sectionBy: {}, navBy: {}, navShownBy: {}, deviceBy: {}
+    ctaBy: {}, sectionBy: {}, navBy: {}, navShownBy: {}, deviceBy: {},
+    utmSourceBy: {}, refBy: {}
   };
 }
 
@@ -152,6 +227,13 @@ function add_(b, r, col) {
     b.navShownBy[k] = (b.navShownBy[k] || 0) + 1; // 노출(보인) 횟수
     if (v === true || v === 'TRUE') b.navBy[k] = (b.navBy[k] || 0) + 1; // 클릭
   });
+
+  // 유입 출처 — UTM 소스 / 리퍼러(호스트). 광고 vs 내부·오가닉 구분 진단용.
+  var us = String(r[col.utm_source] || '').trim() || '(none)';
+  b.utmSourceBy[us] = (b.utmSourceBy[us] || 0) + 1;
+  var ref = String(r[col.ref] || '').trim();
+  var host = ref ? ref.replace(/^https?:\/\//i, '').split('/')[0] : '(direct)';
+  b.refBy[host] = (b.refBy[host] || 0) + 1;
 }
 
 // 헤더 버튼: 클릭률 = 클릭 / "보인 횟수"
@@ -181,6 +263,8 @@ function summarize_(b) {
     ctaClickRatePct: b.n ? +(b.ctaVisits / b.n * 100).toFixed(1) : 0,
     ctaByLocation: rate_(b.ctaBy, b.n),          // CTA 위치별 클릭률
     headerButtonClickRate: navRate_(b.navBy, b.navShownBy), // 헤더 버튼별: 보인 사람 중 클릭률
-    sectionReachRate: rate_(b.sectionBy, b.n)    // 섹션(피처)별 도달률
+    sectionReachRate: rate_(b.sectionBy, b.n),   // 섹션(피처)별 도달률
+    utmSourceBreakdown: rate_(b.utmSourceBy, b.n), // utm_source별 비중 ('(none)'=UTM 없음)
+    referrerBreakdown: rate_(b.refBy, b.n)       // 리퍼러 호스트별 비중 ('(direct)'=referrer 없음)
   };
 }

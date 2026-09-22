@@ -46,9 +46,20 @@ GA·Amplitude 없이, 구글시트 1개에 "1 방문 = 1 행"으로 데이터를
 ```
 https://script.google.com/macros/s/XXXX/exec?stats=1&token=<STATS_TOKEN>
 ```
-→ all / main / a 별로 방문수·평균체류·평균스크롤·CTA클릭률·섹션도달률 JSON 반환.
+→ all / main / a / b 별로 방문수·평균체류·평균스크롤·CTA클릭률·섹션도달률·유입출처(UTM/리퍼러) JSON 반환.
 
 Claude에게 "이 URL 읽고 평균 정리해줘"라고 하면 표로 정리해 줍니다.
+
+#### 필터 (노이즈 제거 / 광고 트래픽만 보기)
+URL 뒤에 파라미터를 붙이면 조건에 맞는 방문만 집계합니다 (없으면 전체):
+- `&utmOnly=1` — **UTM이 붙은 방문만 = 광고 유입.** organic/direct/내부 테스트 제외 (랜딩은 광고 링크 전용이라 이게 "진짜 트래픽"). 가장 깨끗한 `/` vs `/a` 비교.
+- `&utm_source=meta` — 특정 소스만
+- `&device=mobile` — 디바이스 한정 (`pc` | `mobile`)
+- `&since=2026-06-08` — 해당 날짜(KST) 이후 방문만 (예: 측정 버그수정 후 데이터만)
+- `&raw=1` — **요약 대신 방문별 "원본 행"을 그대로 반환** (방문당 1행, 헤더 키). 중앙값·교차분석·이상치 제거 등 요약으로 못 하는 분석용. 위 필터와 조합 가능 (`&raw=1&utmOnly=1`).
+
+예) `...?stats=1&token=<STATS_TOKEN>&utmOnly=1`
+응답의 `utmSourceBreakdown` / `referrerBreakdown` 으로 실제 유입 구성(광고 링크에 UTM이 붙는지)을 먼저 확인할 수 있습니다.
 
 ## 참고/한계
 - `TRACK_URL` 미설정 시 `/api/track`은 조용히 204 (에러 없음). 설정 후부터 수집 시작.
