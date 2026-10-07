@@ -42,7 +42,7 @@ export default function Footer() {
                 {/* 링크 */}
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2 md:gap-4 text-xs md:text-sm mb-6 md:mb-8">
                     <a
-                        href="https://www.notion.so/3624b16ecd1e80058e23eead2b91f853?source=copy_link"
+                        href="https://field-pyrite-e66.notion.site/3e54b16ecd1e8001b39be85c20120e5b?source=copy_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-white transition-colors"
