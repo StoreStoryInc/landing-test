@@ -16,9 +16,9 @@ const automations = [
         mobileTitle: '광고비 낭비,\n스케줄로 잡으세요',
         subtitle: '직접 켜고 끄지 않아도, 설정한 스케줄대로 돌아갑니다',
         description:
-            '예약해둔 시간에 맞춰 클릭당 비용을 자동으로 변경해드립니다.\n배달의민족에 직접 들어가지 않아도, 예약만 해두면 지정된 시간에 설정이 변경돼요.\n요일별·시간대별로 광고를 유연하게 자동 운영해보세요.',
+            '예약해둔 시간에 맞춰 클릭당 비용을 자동으로 변경해드립니다.\n배민·쿠팡이츠에 직접 들어가지 않아도, 예약만 해두면 지정된 시간에 설정이 변경돼요.\n요일별·시간대별로 광고를 유연하게 자동 운영해보세요.',
         stat: { value: '0원', label: '불필요한 광고비' },
-        platform: '배달의민족 우가클',
+        platform: '배민 · 쿠팡이츠',
         platformColor: 'bg-blue-50 text-blue-600',
         mockImage: '/Automation/automation_ads.png',
     },

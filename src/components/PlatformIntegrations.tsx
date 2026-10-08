@@ -13,10 +13,12 @@ const platforms = [
     { name: '대구로', logo: '/platform_logos/daeguro-icon.svg' },
 ];
 
-const posPlatforms = [
-    { name: 'OKPOS', logo: '/platform_logos/okpos-icon.svg' },
-    { name: 'UNION POS', logo: '/platform_logos/unionpos-icon.svg' },
-    { name: 'Easy POS', logo: '/platform_logos/easypos-icon.svg', compact: true },
+const posPlatforms: Platform[] = [
+    { name: 'OKPOS', logo: '/platform_logos/okpos-icon.svg', size: 'large' },
+    { name: 'UNION POS', logo: '/platform_logos/unionpos-icon.svg', size: 'large' },
+    { name: 'Easy POS', logo: '/platform_logos/easypos-icon.svg', size: 'default' },
+    // 메이트포스 — 워드마크 원본(250×64)이라 가로형으로 렌더 (너비는 large 아이콘과 비슷하게)
+    { name: '메이트포스', logo: '/platform_logos/matepos.png', size: 'wordmark-sm' },
 ];
 
 // 여신금융협회(카드입금) — 정산 연동. 워드마크 원본(180×44)이라 가로형으로 렌더
@@ -32,7 +34,8 @@ const WAVE_PAUSE = 1.6; // 파도가 다 지나간 뒤 쉬는 시간
 // 첫 iteration의 delay만 인덱스별로 다르게 주고, 이후 반복 간격(repeatDelay)은 모두 동일하게 두어 시차를 유지
 const WAVE_REPEAT_DELAY = (TOTAL_ICONS - 1) * WAVE_STEP + WAVE_PAUSE;
 
-type Platform = { name: string; logo: string; compact?: boolean };
+type LogoSize = 'default' | 'large' | 'wordmark' | 'wordmark-sm';
+type Platform = { name: string; logo: string; size?: LogoSize };
 
 function LogoIcon({
     platform,
@@ -40,7 +43,7 @@ function LogoIcon({
     index = 0,
 }: {
     platform: Platform;
-    size?: 'default' | 'large' | 'wordmark';
+    size?: LogoSize;
     index?: number;
 }) {
     const prefersReducedMotion = useReducedMotion();
@@ -49,6 +52,8 @@ function LogoIcon({
             ? 'w-20 h-20 md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px]'
             : size === 'wordmark'
             ? 'w-[162px] h-[40px] md:w-[186px] md:h-[45px] lg:w-[198px] lg:h-[48px]'
+            : size === 'wordmark-sm'
+            ? 'w-[94px] h-[24px] md:w-[125px] md:h-[32px] lg:w-[148px] lg:h-[38px]'
             : 'w-16 h-16 md:w-[96px] md:h-[96px] lg:w-[112px] lg:h-[112px]';
     return (
         <motion.div
@@ -134,21 +139,25 @@ export default function PlatformIntegrations() {
                     <div className="flex-1 h-px bg-gray-200" />
                 </div>
 
-                {/* POS */}
+                {/* POS — 모바일: 2 + 2 두 줄, 데스크탑: 한 줄 (md:contents로 래퍼를 풀어 부모 flex에 바로 배치) */}
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-50px' }}
                     transition={{ duration: 0.5, delay: 0.05 }}
-                    className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16"
+                    className="flex flex-col items-center gap-6 md:flex-row md:flex-wrap md:justify-center md:gap-12 lg:gap-16"
                 >
-                    {posPlatforms.map((p, i) => (
-                        <LogoIcon
-                            key={p.name}
-                            platform={p}
-                            size={p.compact ? 'default' : 'large'}
-                            index={platforms.length + i}
-                        />
+                    {[posPlatforms.slice(0, 2), posPlatforms.slice(2)].map((row, rowIndex) => (
+                        <div key={rowIndex} className="flex items-center justify-center gap-8 md:contents">
+                            {row.map((p, i) => (
+                                <LogoIcon
+                                    key={p.name}
+                                    platform={p}
+                                    size={p.size ?? 'large'}
+                                    index={platforms.length + rowIndex * 2 + i}
+                                />
+                            ))}
+                        </div>
                     ))}
                 </motion.div>
 
